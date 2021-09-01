@@ -27,7 +27,7 @@ Route::get('/login', function () {
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('can:dashboard')->name("dashboard");
+Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard");
 
 Route::get('users/get', [UserController::class, 'get'])->name('users.get');
 Route::resource('users', UserController::class)->names('users');

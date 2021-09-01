@@ -83,9 +83,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
+        $user->roles()->sync($request->roles);
+        return redirect()->route('users.edit', $user)->with('info', 'Se editó el usuario correctamente');
     }
 
     /**
@@ -107,7 +109,11 @@ class UserController extends Controller
         $users = User::select('id', 'name', 'last_name', 'email', 'created_at')->get();
         return DataTables::of($users)
             ->addColumn('action', function ($user) {
-                return '<a href="/users/' . $user->id . '/edit" class="btn btn-xs btn-primary"><i class="fa fa-user"></i> Editar</a>';
+                return '
+                <a href="/users/' . $user->id . '/show" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
+                <a href="/users/' . $user->id . '/edit" class="btn btn-xs btn-primary"><i class="fas fa-user-edit"></i></a>
+                <a href="#" class="btn btn-xs btn-danger"><i class="fas fa-trash-alt"></i></a>
+                ';
             })
             ->removeColumn('id')
             ->make(true);

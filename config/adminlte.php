@@ -229,32 +229,30 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
 
         // Sidebar items:
+        /*
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+        */
         [
             'text'  => 'Dashboard',
             'route' => 'dashboard',
-            'icon' => 'fas fa-fw fa-tachometer-alt'
+            'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
             'text'  => 'Usuarios',
             'route' => 'users.index',
-            'icon' => 'fas fa-fw fa-users'
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'icon' => 'fas fa-fw fa-users',
+            'can'  => 'users.index',
         ],
         [
             'text'        => 'pages',
