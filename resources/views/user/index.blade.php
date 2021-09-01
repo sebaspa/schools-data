@@ -15,6 +15,7 @@
                 <th>Apellidos</th>
                 <th>Correo</th>
                 <th>Incorporación</th>
+                <th>Acciones</th>
             </tr>
         </thead>
     </table>
@@ -40,18 +41,29 @@
             processing: true,
             serverSide: true,
             ajax: "{{ route('users.get') }}",
-            columns: [{
-                    data: 'name'
+            columns: [
+                {
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'last_name'
+                    data: 'last_name',
+                    name: 'last_name'
                 },
                 {
-                    data: 'email'
+                    data: 'email',
+                    name: 'email'
                 },
                 {
-                    data: 'created_at'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                }
             ]
         });
     </script>

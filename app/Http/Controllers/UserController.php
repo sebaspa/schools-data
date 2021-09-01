@@ -4,10 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+        $this->middleware(['can:users.index'])->only('index');
+        $this->middleware(['can:users.edit'])->only('edit', 'update');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +29,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('user.index', compact('users'));
+        return view('user.index');
     }
 
     /**
@@ -58,9 +70,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+        return view("user.edit", compact("user", "roles"));
     }
 
     /**
@@ -91,7 +104,12 @@ class UserController extends Controller
      */
     public function get(Request $request)
     {
-        $users = User::select('name', 'last_name', 'email', 'created_at')->get();
-        return DataTables::of($users)->make(true);
+        $users = User::select('id', 'name', 'last_name', 'email', 'created_at')->get();
+        return DataTables::of($users)
+            ->addColumn('action', function ($user) {
+                return '<a href="/users/' . $user->id . '/edit" class="btn btn-xs btn-primary"><i class="fa fa-user"></i> Editar</a>';
+            })
+            ->removeColumn('id')
+            ->make(true);
     }
 }
