@@ -247,6 +247,11 @@ return [
             'icon' => 'fas fa-fw fa-tachometer-alt'
         ],
         [
+            'text'  => 'Usuarios',
+            'route' => 'users.index',
+            'icon' => 'fas fa-fw fa-users'
+        ],
+        [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',

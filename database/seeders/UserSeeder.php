@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,14 +18,16 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('users')->insert([
-            'name' => 'Juan Seabstian',
+        User::create([
+            'name' => 'Juan Sebastian',
             'last_name' => 'Parra Manchola',
             'email' => 'email@email.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make('pG^UT4jfvx#v'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
-        ]);
+        ])->syncRoles('Administrador');
+
+        User::factory(199)->create();
     }
 }
