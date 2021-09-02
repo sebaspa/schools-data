@@ -1,9 +1,9 @@
 @extends('adminlte::page')
-@section('title', 'Editar usuario')
+@section('title', 'Crear usuario')
 
 
 @section('content_header')
-    <h1>Editar usuario</h1>
+    <h1>Crear usuario</h1>
 @stop
 
 @section('content')
@@ -13,10 +13,9 @@
             <p class="mb-0">{{ session('info') }}</p>
         </div>
     @endif
-    <form action="{{ route('users.update', ['user' => $user]) }}" method="POST">
-        @method('patch')
+    <form action="{{ route('users.store') }}" method="POST">
         <div class="container">
-            @include('user._form', ['btnText' => 'Editar'])
+            @include('user._form', ['btnText' => 'Crear'])
         </div>
     </form>
 @stop

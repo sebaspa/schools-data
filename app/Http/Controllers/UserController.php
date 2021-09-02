@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditUserRequest;
+use App\Http\Requests\SaveUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -40,6 +42,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        $roles = Role::all();
+        return view('user.create', ['user' => new User], compact('roles'));
     }
 
     /**
@@ -48,9 +52,12 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveUserRequest $request)
     {
         //
+        User::create($request->validated());
+
+        return redirect()->route('users.index')->with('Usuario guardado correctamente');
     }
 
     /**
@@ -62,6 +69,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view("user.show", compact("user"));
     }
 
     /**
@@ -83,11 +92,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(EditUserRequest $request, User $user)
     {
         //
         $user->roles()->sync($request->roles);
-        return redirect()->route('users.edit', $user)->with('info', 'Se editó el usuario correctamente');
+
+        $data = $request->only('name', 'last_name', 'email');
+        $password = $request->input("password");
+        if ($password) {
+            $data['password'] = bcrypt($password);
+        }
+        $user->update($data);
+
+        return redirect()->route('users.show', $user->id)->with('info', 'Se editó el usuario correctamente');
     }
 
     /**
@@ -104,10 +121,13 @@ class UserController extends Controller
     /**
      * Get Usersby AJAX Request
      */
-    public function get(Request $request)
+    public function get()
     {
         $users = User::select('id', 'name', 'last_name', 'email', 'created_at')->get();
         return DataTables::of($users)
+            ->addColumn('created_at', function ($user) {
+                return $user->created_at->diffForHumans();
+            })
             ->addColumn('action', function ($user) {
                 return '
                 <a href="/users/' . $user->id . '/show" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
