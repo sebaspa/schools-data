@@ -1,10 +1,16 @@
 @extends('adminlte::page')
+@section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@stop
 @section('title', 'Usuarios')
 
+@section('plugins.Sweetalert2', true)
 @section('plugins.Datatables', true)
 
+
 @section('content_header')
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-secondary float-right"><i class="fas fa-user-plus mr-1"></i> Crear usuario</a>
+    <a href="{{ route('users.create') }}" class="btn btn-sm btn-secondary float-right"><i class="fas fa-user-plus mr-1"></i>
+        Crear usuario</a>
     <h1>Listado de usuarios</h1>
 @stop
 
@@ -26,6 +32,8 @@
 
 @section('js')
     <script>
+        var token = $("meta[name='csrf-token']").attr("content");
+
         $("#table-users").DataTable({
             language: {
                 "lengthMenu": "Mostrar _MENU_ resultados por página",
@@ -67,6 +75,51 @@
                     searchable: false
                 }
             ]
+        });
+        $("body").on("click", ".btn-user-delete", function() {
+            let id = $(this).data("id");
+            Swal.fire({
+                type: 'warning',
+                title: 'Estas seguro?',
+                text: "Se va a eliminar un usuario",
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "users/" + id,
+                        data: {
+                            "id": id,
+                            "_token": token
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            $("#table-users").DataTable().ajax.reload();
+                            if (response.errors) {
+                                Swal.fire({
+                                    type: 'danger',
+                                    text: "No se ha podido eliminar el usuario.",
+                                });
+                            } else {
+                                Swal.fire({
+                                    type: 'success',
+                                    text: "Usuario eliminado correctamente.",
+                                });
+
+                            }
+                        },
+                        error: function(error) {
+                            Swal.fire({
+                                type: 'error',
+                                text: "No se ha podido eliminar el usuario.",
+                            });
+                            console.error(error);
+                        }
+                    });
+                }
+            })
         });
     </script>
 @stop

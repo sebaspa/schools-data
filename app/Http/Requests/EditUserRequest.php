@@ -28,7 +28,7 @@ class EditUserRequest extends FormRequest
             'name' => 'required|min:3|max:100',
             'last_name' => 'required|min:3|max:100',
             'email' => 'required|max:255|email|unique:users,email,' . request()->route('user')->id,
-            'password' => 'sometimes|nullable|min:8|max:50',
+            'password' => 'sometimes|nullable|min:8|max:50|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
             'roles' => 'exists:roles,id'
         ];
     }

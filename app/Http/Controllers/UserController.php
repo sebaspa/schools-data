@@ -113,9 +113,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        if ($request->ajax()) {
+            $data = $request->validate([
+                'id' => 'required',
+            ]);
+            $user = new User($data);
+            $user = User::findOrFail($id);
+            $user->delete();
+            return response()->json($data, 200);
+        }
     }
 
     /**
@@ -132,7 +141,7 @@ class UserController extends Controller
                 return '
                 <a href="/users/' . $user->id . '/show" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
                 <a href="/users/' . $user->id . '/edit" class="btn btn-xs btn-primary"><i class="fas fa-user-edit"></i></a>
-                <a href="#" class="btn btn-xs btn-danger"><i class="fas fa-trash-alt"></i></a>
+                <a href="#" data-id="' . $user->id . '" class="btn btn-xs btn-danger btn-user-delete"><i class="fas fa-trash-alt"></i></a>
                 ';
             })
             ->removeColumn('id')

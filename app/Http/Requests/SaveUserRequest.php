@@ -29,7 +29,7 @@ class SaveUserRequest extends FormRequest
             'name' => 'required|min:3|max:100',
             'last_name' => 'required|min:3|max:100',
             'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|min:8|max:50',
+            'password' => 'required|min:8|max:50|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
             'roles' => 'exists:roles,id'
         ];
     }
