@@ -139,7 +139,7 @@ class UserController extends Controller
             })
             ->addColumn('action', function ($user) {
                 return '
-                <a href="/users/' . $user->id . '/show" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
+                <a href="/users/' . $user->id . '" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
                 <a href="/users/' . $user->id . '/edit" class="btn btn-xs btn-primary"><i class="fas fa-user-edit"></i></a>
                 <a href="#" data-id="' . $user->id . '" class="btn btn-xs btn-danger btn-user-delete"><i class="fas fa-trash-alt"></i></a>
                 ';
