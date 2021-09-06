@@ -57,7 +57,8 @@ class UserController extends Controller
     public function store(SaveUserRequest $request)
     {
         //
-        User::create($request->validated());
+        $user = User::create($request->validated());
+        $user->roles()->sync($request->roles);
 
         return redirect()->route('users.index')->with('Usuario guardado correctamente');
     }
@@ -102,7 +103,7 @@ class UserController extends Controller
         $data = $request->only('name', 'last_name', 'email');
         $password = $request->input("password");
         if ($password) {
-            $data['password'] = bcrypt($password);
+            $data['password'] = $password;
         }
         $user->update($data);
 
