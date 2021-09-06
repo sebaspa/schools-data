@@ -51,6 +51,13 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
+    }
 
+    /**
+     * Add profile url for admin lte template
+     */
+    public function adminlte_profile_url()
+    {
+        return "profile";
     }
 }

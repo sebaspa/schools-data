@@ -69,7 +69,7 @@ return [
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -260,6 +260,7 @@ return [
             'icon' => 'fas fa-fw fa-users-cog',
             'can'  => 'roles.index',
         ],
+        /*
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',
@@ -267,17 +268,9 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        */
+        //['header' => 'account_settings'],
+        /*
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -316,22 +309,14 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        */
+        /*
         [
             'text'       => 'important',
-            'icon_color' => 'red',
+            'icon_color' => 'red', //yellow, cyan
             'url'        => '#',
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        */
     ],
 
     /*

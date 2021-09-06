@@ -30,8 +30,10 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard");
 
+Route::get('profile', [UserController::class, 'profile'])->name('users.profile');
+Route::post('users/updateprofile', [UserController::class, 'updateprofile'])->name('users.updateprofile');
 Route::get('users/get', [UserController::class, 'get'])->name('users.get');
 Route::resource('users', UserController::class)->names('users');
 
-Route::resource('roles', RoleController::class)->names('roles');
 
+Route::resource('roles', RoleController::class)->names('roles');

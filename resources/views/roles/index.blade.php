@@ -37,10 +37,10 @@
                             <td>{{ $role->name }}</td>
                             <td width="130">
                                 <div class="d-flex">
-                                    <a href="{{ route('roles.edit', $role) }}" class="mx-1 btn btn-primary">
+                                    <a href="{{ route('roles.edit', $role) }}" class="mx-1 btn btn-xs btn-primary">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="#" data-id="{{ $role->id }}" class="mx-1 btn btn-danger btn-delete-role">
+                                    <a href="#" data-id="{{ $role->id }}" class="mx-1 btn btn-xs btn-danger btn-delete-role">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </div>
