@@ -258,7 +258,7 @@ return [
             'text'  => 'Roles',
             'route' => 'roles.index',
             'icon' => 'fas fa-fw fa-users-cog',
-            //'can'  => 'users.index',
+            'can'  => 'roles.index',
         ],
         [
             'text'        => 'pages',

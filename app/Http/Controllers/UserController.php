@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth']);
         $this->middleware(['can:users.index'])->only('index', 'get');
         $this->middleware(['can:users.edit'])->only('edit', 'update');
         $this->middleware(['can:users.destroy'])->only('destroy');
