@@ -255,6 +255,12 @@ return [
             'can'  => 'users.index',
         ],
         [
+            'text'  => 'Roles',
+            'route' => 'roles.index',
+            'icon' => 'fas fa-fw fa-users-cog',
+            //'can'  => 'users.index',
+        ],
+        [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',

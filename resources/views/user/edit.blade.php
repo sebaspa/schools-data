@@ -7,16 +7,19 @@
 @stop
 
 @section('content')
-
-    @if (session('info'))
-        <div class="alert alert-success my-3">
-            <p class="mb-0">{{ session('info') }}</p>
+    <div class="card">
+        <div class="card-body">
+            @if (session('info'))
+                <div class="alert alert-success my-3">
+                    <p class="mb-0">{{ session('info') }}</p>
+                </div>
+            @endif
+            <form action="{{ route('users.update', ['user' => $user]) }}" method="POST">
+                @method('patch')
+                <div class="container-fluid">
+                    @include('user._form', ['btnText' => 'Editar'])
+                </div>
+            </form>
         </div>
-    @endif
-    <form action="{{ route('users.update', ['user' => $user]) }}" method="POST">
-        @method('patch')
-        <div class="container">
-            @include('user._form', ['btnText' => 'Editar'])
-        </div>
-    </form>
+    </div>
 @stop

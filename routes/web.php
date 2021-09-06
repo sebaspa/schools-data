@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -31,3 +32,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard
 
 Route::get('users/get', [UserController::class, 'get'])->name('users.get');
 Route::resource('users', UserController::class)->names('users');
+
+Route::resource('roles', RoleController::class)->names('roles');
+

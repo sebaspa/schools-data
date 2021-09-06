@@ -10,23 +10,26 @@
 
 @section('content_header')
     <a href="{{ route('users.create') }}" class="btn btn-sm btn-secondary float-right"><i class="fas fa-user-plus mr-1"></i>
-        Crear usuario</a>
+        Crear usuario
+    </a>
     <h1>Listado de usuarios</h1>
 @stop
 
 @section('content')
-    <div class="card-body">
-        <table class="table table-striped" id="table-users">
-            <thead>
-                <tr>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Incorporación</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-        </table>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped" id="table-users">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Incorporación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 @stop
 
