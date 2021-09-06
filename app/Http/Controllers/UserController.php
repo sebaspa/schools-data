@@ -21,7 +21,7 @@ class UserController extends Controller
         $this->middleware(['auth', 'verified']);
         $this->middleware(['can:users.index'])->only('index', 'get');
         $this->middleware(['can:users.edit'])->only('edit', 'update');
-        $this->middleware(['can:users.delete'])->only('destroy');
+        $this->middleware(['can:users.destroy'])->only('destroy');
         $this->middleware(['can:users.show'])->only('show');
     }
 
