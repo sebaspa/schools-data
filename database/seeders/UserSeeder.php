@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Parra Manchola',
             'email' => 'email@email.com',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('pG^UT4jfvx#v'),
+            'password' => 'pG^UT4jfvx#v',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ])->syncRoles('Administrador');
