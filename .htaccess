@@ -1,0 +1,4 @@
+RewriteCond %{HTTP_HOST} ^gimunicipal.es$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^www.gimunicipal.es/$
+  RewriteCond %{REQUEST_URI} !public/
+  RewriteRule (.*) /public/$1 [L]

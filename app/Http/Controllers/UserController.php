@@ -179,21 +179,23 @@ class UserController extends Controller
     /**
      * Get Usersby AJAX Request
      */
-    public function get()
+    public function get(Request $request)
     {
-        $users = User::select('id', 'name', 'last_name', 'email', 'created_at')->get();
-        return DataTables::of($users)
-            ->addColumn('created_at', function ($user) {
-                return $user->created_at->diffForHumans();
-            })
-            ->addColumn('action', function ($user) {
-                return '
+        if ($request->ajax()) {
+            $users = User::select('id', 'name', 'last_name', 'email', 'created_at')->get();
+            return DataTables::of($users)
+                ->addColumn('created_at', function ($user) {
+                    return $user->created_at->diffForHumans();
+                })
+                ->addColumn('action', function ($user) {
+                    return '
                 <a href="/users/' . $user->id . '" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
                 <a href="/users/' . $user->id . '/edit" class="btn btn-xs btn-primary"><i class="fas fa-user-edit"></i></a>
                 <a href="#" data-id="' . $user->id . '" class="btn btn-xs btn-danger btn-user-delete"><i class="fas fa-trash"></i></a>
                 ';
-            })
-            ->removeColumn('id')
-            ->make(true);
+                })
+                ->removeColumn('id')
+                ->make(true);
+        }
     }
 }
