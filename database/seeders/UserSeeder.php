@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -24,10 +23,13 @@ class UserSeeder extends Seeder
             'email' => 'email@email.com',
             'email_verified_at' => Carbon::now(),
             'password' => 'pG^UT4jfvx#v',
+            'remember_token' => Str::random(10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ])->syncRoles('Administrador');
 
-        User::factory(199)->create();
+        if (app()->environment() == 'local') {
+            User::factory(199)->create();
+        }
     }
 }
