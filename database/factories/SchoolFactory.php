@@ -27,6 +27,7 @@ class SchoolFactory extends Factory
             'address' => $this->faker->address(),
             'district' => $this->faker->city(),
             'phone' => $this->faker->phoneNumber(),
+            'fax' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
             'liable' => $this->faker->name(),
             'others' => $this->faker->paragraph()

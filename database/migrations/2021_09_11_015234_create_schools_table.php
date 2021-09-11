@@ -19,7 +19,8 @@ class CreateSchoolsTable extends Migration
             $table->string("address", 200)->unique();
             $table->string("district", 200);
             $table->string("phone", 50);
-            $table->string("email", 100);
+            $table->string("fax", 50);
+            $table->string("email", 100)->unique();
             $table->string("liable", 100);
             $table->text("others")->nullable();
             $table->timestamps();

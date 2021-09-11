@@ -61,7 +61,7 @@ class UserController extends Controller
         $user = User::create($request->validated());
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('users.index')->with('Usuario guardado correctamente');
+        return redirect()->route('users.index')->with('info', 'Usuario guardado correctamente');
     }
 
     /**
