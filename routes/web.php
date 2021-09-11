@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -42,3 +43,4 @@ Route::resource('users', UserController::class)->names('users');
 
 
 Route::resource('roles', RoleController::class)->names('roles');
+Route::resource('schools', SchoolController::class)->names('schools');

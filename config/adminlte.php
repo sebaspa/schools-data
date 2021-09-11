@@ -260,6 +260,12 @@ return [
             'icon' => 'fas fa-fw fa-users-cog',
             'can'  => 'roles.index',
         ],
+        [
+            'text'  => 'Escuelas',
+            'route' => 'schools.index',
+            'icon' => 'fas fa-fw fa-school',
+            //'can'  => 'roles.index',
+        ],
         /*
         [
             'text'        => 'pages',
