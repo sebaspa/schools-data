@@ -8,10 +8,14 @@
 @section('content')
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">{{ $school->name }}</h3>
+            <h3 class="card-title">Principal</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <strong><i class="fas fa-school mr-1"></i> Nombre</strong>
+            <p class="text-muted">{{ $school->name }}</p>
+            <hr>
+
             <strong><i class="fas fa-map-marker-alt mr-1"></i> Dirección</strong>
             <p class="text-muted">{{ $school->address }}</p>
             <hr>
