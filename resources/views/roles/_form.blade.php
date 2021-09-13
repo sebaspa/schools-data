@@ -10,17 +10,19 @@
             @enderror
         </div>
         <h4 class="mb-4">Lista de permisos</h4>
-        @foreach ($permissions as $permission)
-            <div>
-                <label>
-                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="mr-2"
-                        {{ array_search($permission->id, array_column($role->permissions->toArray(), 'id')) !== false ? 'checked' : '' }}>
-                    {{ $permission->description }}
-                </label>
-            </div>
-        @endforeach
+        <div class="row">
+            @foreach ($permissions as $permission)
+                <div class="col-12 col-md-4">
+                    <label>
+                        <input type="checkbox" name="permissions[]" value="{{ $permission->id }}" class="mr-2"
+                            {{ array_search($permission->id, array_column($role->permissions->toArray(), 'id')) !== false ? 'checked' : '' }}>
+                        {{ $permission->description }}
+                    </label>
+                </div>
+            @endforeach
+        </div>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-4">
         <button class="btn btn-primary" type="submit">{{ $btnText }} rol</button>
     </div>
 </div>
