@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 
 DB::listen(function ($query) {
     //echo "<div class='container'><pre>{$query->sql}</pre></div>";
+    //echo "<div class='container'><pre>{$query->time}</pre></div>";
 });
 
 Route::get('/', function () {
