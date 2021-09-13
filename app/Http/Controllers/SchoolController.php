@@ -18,6 +18,10 @@ class SchoolController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
+        $this->middleware(['can:schools.index'])->only('index', 'get');
+        $this->middleware(['can:schools.edit'])->only('edit', 'update');
+        $this->middleware(['can:schools.destroy'])->only('destroy');
+        $this->middleware(['can:schools.show'])->only('show');
     }
 
     /**

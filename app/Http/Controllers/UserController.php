@@ -106,7 +106,8 @@ class UserController extends Controller
         if ($password) {
             $data['password'] = $password;
         }
-        $user->update($data);
+        //$user->update($data);
+        $user->update($request->validated());
 
         return redirect()->route('users.show', $user->id)->with('info', 'Se editó el usuario correctamente');
     }
