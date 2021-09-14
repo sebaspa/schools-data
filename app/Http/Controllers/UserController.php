@@ -45,7 +45,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        $roles = Role::all();
+        $roles = Role::all(['id', 'name']);
         return view('user.create', ['user' => new User], compact('roles'));
     }
 
@@ -85,7 +85,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all();
+        $roles = Role::all(['id', 'name']);
         return view("user.edit", compact("user", "roles"));
     }
 
@@ -138,7 +138,7 @@ class UserController extends Controller
 
     public function profile()
     {
-        $roles = Role::all();
+        $roles = Role::all(['id', 'name']);
         $user = Auth::user();
         return view("user.profile", compact("user", "roles"));
     }

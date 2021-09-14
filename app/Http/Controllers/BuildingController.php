@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBuildRequest;
+use App\Http\Requests\UpdateBuildRequest;
 use App\Models\Building;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,8 @@ class BuildingController extends Controller
     public function index()
     {
         //
+        $buildings = Building::paginate(20, ['id', 'name', 'description']);
+        return view('building.index', compact('buildings'));
     }
 
     /**
@@ -25,6 +29,7 @@ class BuildingController extends Controller
     public function create()
     {
         //
+        return view("building.create", ['building' => new Building()]);
     }
 
     /**
@@ -33,9 +38,11 @@ class BuildingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBuildRequest $request)
     {
         //
+        Building::create($request->validated());
+        return redirect()->route('buildings.index')->with('info', 'Construcción guardada correctamente');
     }
 
     /**
@@ -58,6 +65,7 @@ class BuildingController extends Controller
     public function edit(Building $building)
     {
         //
+        return view("building.edit", compact('building'));
     }
 
     /**
@@ -67,9 +75,11 @@ class BuildingController extends Controller
      * @param  \App\Models\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Building $building)
+    public function update(UpdateBuildRequest $request, Building $building)
     {
         //
+        $building->update($request->validated());
+        return redirect()->route('buildings.index')->with('info', 'Se editó la construcción correctamente');
     }
 
     /**
@@ -78,8 +88,15 @@ class BuildingController extends Controller
      * @param  \App\Models\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Building $building)
+    public function destroy(Request $request, Building $building)
     {
         //
+        if ($request->ajax()) {
+            $request->validate([
+                'id' => 'required',
+            ]);
+            $building->delete();
+            return response()->json($building, 200);
+        }
     }
 }

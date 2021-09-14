@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -18,11 +19,13 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 DB::listen(function ($query) {
+    //var_dump($query->sql);
     //echo "<div class='container'><pre>{$query->sql}</pre></div>";
     //echo "<div class='container'><pre>{$query->time}</pre></div>";
 });
+*/
 
 Route::get('/', function () {
     return redirect()->to('dashboard');
@@ -42,8 +45,9 @@ Route::post('users/updateprofile', [UserController::class, 'updateprofile'])->na
 Route::get('users/get', [UserController::class, 'get'])->name('users.get');
 Route::resource('users', UserController::class)->names('users');
 
-
 Route::resource('roles', RoleController::class)->names('roles');
 
 Route::get('schools/get', [SchoolController::class, 'get'])->name('schools.get');
 Route::resource('schools', SchoolController::class)->names('schools');
+
+Route::resource('buildings', BuildingController::class)->names('buildings');

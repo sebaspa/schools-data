@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function index()
     {
         //
-        $roles = Role::paginate(3);
+        $roles = Role::paginate(20, ["id", "name"]);
         return view('roles.index', compact('roles'));
     }
 
@@ -42,7 +42,7 @@ class RoleController extends Controller
     public function create()
     {
         //
-        $permissions = Permission::all();
+        $permissions = Permission::all(['id', 'name', 'description']);
         return view('roles.create', ['role' => new Role], compact('permissions'));
     }
 
@@ -85,7 +85,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
-        $permissions = Permission::all();
+        $permissions = Permission::all(['id', 'name', 'description']);
         return view('roles.edit', compact('role', 'permissions'));
     }
 

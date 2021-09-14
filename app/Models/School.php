@@ -24,4 +24,9 @@ class School extends Model
         'liable',
         'others',
     ];
+
+    public function buildings()
+    {
+        return $this->belongsToMany(Building::class);
+    }
 }

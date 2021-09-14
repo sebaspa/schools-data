@@ -264,7 +264,13 @@ return [
             'text'  => 'Escuelas',
             'route' => 'schools.index',
             'icon' => 'fas fa-fw fa-school',
-            //'can'  => 'roles.index',
+            'can'  => 'schools.index',
+        ],
+        [
+            'text'  => 'Construcciones',
+            'route' => 'buildings.index',
+            'icon' => 'fas fa-fw fa-building',
+            //'can'  => 'buildings.index',
         ],
         /*
         [
