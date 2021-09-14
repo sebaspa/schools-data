@@ -10,6 +10,20 @@ use Illuminate\Http\Request;
 class BuildingController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+        $this->middleware(['can:buildings.index'])->only('index', 'get');
+        $this->middleware(['can:buildings.edit'])->only('edit', 'update');
+        $this->middleware(['can:buildings.destroy'])->only('destroy');
+        $this->middleware(['can:buildings.show'])->only('show');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

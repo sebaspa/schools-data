@@ -270,7 +270,7 @@ return [
             'text'  => 'Construcciones',
             'route' => 'buildings.index',
             'icon' => 'fas fa-fw fa-building',
-            //'can'  => 'buildings.index',
+            'can'  => 'buildings.index',
         ],
         /*
         [
