@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 @section('title', 'Editar escuela')
 
-
 @section('content_header')
     <h1>Editar escuela</h1>
 @stop
@@ -23,3 +22,4 @@
         </div>
     </div>
 @stop
+

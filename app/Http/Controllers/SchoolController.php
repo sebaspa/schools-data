@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
+use App\Models\Building;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
-use App\Models\School;
-use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
 
 class SchoolController extends Controller
 {
@@ -19,8 +21,8 @@ class SchoolController extends Controller
     {
         $this->middleware(['auth']);
         $this->middleware(['can:schools.index'])->only('index', 'get');
-        $this->middleware(['can:schools.edit'])->only('edit', 'update');
-        $this->middleware(['can:schools.destroy'])->only('destroy');
+        $this->middleware(['can:schools.edit'])->only('edit', 'update', 'deletebuilding');
+        $this->middleware(['can:schools.destroy'])->only('destroy', 'deletebuilding');
         $this->middleware(['can:schools.show'])->only('show');
     }
 
@@ -43,7 +45,8 @@ class SchoolController extends Controller
     public function create()
     {
         //
-        return view("school.create", ['school' => new School()]);
+        $buildings = Building::all(['id', 'name']);
+        return view("school.create", ['school' => new School()], compact('buildings'));
     }
 
     /**
@@ -55,7 +58,20 @@ class SchoolController extends Controller
     public function store(StoreSchoolRequest $request)
     {
         //
-        School::create($request->validated());
+        $school = School::create($request->validated());
+        if ($request->building_assigned) {
+            foreach ($request->building_assigned as $key => $value) {
+                DB::table('building_school')
+                    ->insert(
+                        [
+                            'building_id' => $request->building_assigned[$key],
+                            'school_id' => $school->id,
+                            'quantity' => $request->quantity_assigned[$key],
+                        ]
+                    );
+            }
+        }
+        //dd($request->all());
         return redirect()->route('schools.index')->with('info', 'Escuela guardada correctamente');
     }
 
@@ -68,6 +84,9 @@ class SchoolController extends Controller
     public function show(School $school)
     {
         //
+        $school->load([
+            'buildings',
+        ])->get();
         return view('school.show', compact('school'));
     }
 
@@ -80,7 +99,11 @@ class SchoolController extends Controller
     public function edit(School $school)
     {
         //
-        return view("school.edit", compact("school"));
+        $buildings = Building::all(['id', 'name']);
+        $school->load([
+            'buildings',
+        ])->get();
+        return view("school.edit", compact('school', 'buildings'));
     }
 
     /**
@@ -94,6 +117,20 @@ class SchoolController extends Controller
     {
         //
         $school->update($request->validated());
+        if ($request->building_assigned) {
+            foreach ($request->building_assigned as $key => $value) {
+                DB::table('building_school')
+                    ->updateOrInsert(
+                        ['id' => $request->building_school[$key] ?? null],
+                        [
+                            'building_id' => $request->building_assigned[$key],
+                            'school_id' => $school->id,
+                            'quantity' => $request->quantity_assigned[$key],
+                        ]
+                    );
+            }
+        }
+        //dd($request->all());
         return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
     }
 
@@ -132,6 +169,20 @@ class SchoolController extends Controller
                 })
                 ->removeColumn('id')
                 ->make(true);
+        }
+    }
+
+    public function deletebuilding(Request $request)
+    {
+        if ($request->ajax()) {
+            $request->validate([
+                'id' => 'required',
+            ]);
+            DB::table('building_school')
+                ->where('id', '=', $request->id)
+                ->delete();
+
+            return response()->json($request->id, 200);
         }
     }
 }

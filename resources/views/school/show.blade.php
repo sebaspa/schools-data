@@ -47,4 +47,6 @@
         </div>
         <!-- /.card-body -->
     </div>
+    {{ $school->buildings }}
+
 @stop

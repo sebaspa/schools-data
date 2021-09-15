@@ -13,4 +13,9 @@ class Building extends Model
         'name',
         'description'
     ];
+
+    public function schools()
+    {
+        return $this->belongsToMany(School::class);
+    }
 }

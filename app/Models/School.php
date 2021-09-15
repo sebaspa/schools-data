@@ -27,6 +27,6 @@ class School extends Model
 
     public function buildings()
     {
-        return $this->belongsToMany(Building::class);
+        return $this->belongsToMany(Building::class)->withPivot('id','quantity');
     }
 }
