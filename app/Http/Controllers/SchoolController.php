@@ -61,15 +61,11 @@ class SchoolController extends Controller
         $school = School::create($request->validated());
         if ($request->building_assigned) {
             foreach ($request->building_assigned as $key => $value) {
-                DB::table('building_school')
-                    ->insert(
-                        [
-                            'building_id' => $request->building_assigned[$key],
-                            'school_id' => $school->id,
-                            'quantity' => $request->quantity_assigned[$key],
-                        ]
-                    );
+                $pivot_building_school[$value] = [
+                    'quantity' => $request->quantity_assigned[$key]
+                ];
             }
+            $school->buildings()->sync($pivot_building_school);
         }
         //dd($request->all());
         return redirect()->route('schools.index')->with('info', 'Escuela guardada correctamente');
@@ -119,17 +115,14 @@ class SchoolController extends Controller
         $school->update($request->validated());
         if ($request->building_assigned) {
             foreach ($request->building_assigned as $key => $value) {
-                DB::table('building_school')
-                    ->updateOrInsert(
-                        ['id' => $request->building_school[$key] ?? null],
-                        [
-                            'building_id' => $request->building_assigned[$key],
-                            'school_id' => $school->id,
-                            'quantity' => $request->quantity_assigned[$key],
-                        ]
-                    );
+                $pivot_building_school[$value] = [
+                    'quantity' => $request->quantity_assigned[$key]
+                ];
             }
+            $school->buildings()->sync($pivot_building_school);
         }
+        $school->buildings()->sync($pivot_building_school);
+
         //dd($request->all());
         return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
     }
@@ -147,6 +140,7 @@ class SchoolController extends Controller
             $request->validate([
                 'id' => 'required',
             ]);
+            $school->buildings()->detach();
             $school->delete();
             return response()->json($school, 200);
         }

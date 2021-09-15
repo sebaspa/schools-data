@@ -16,6 +16,6 @@ class Building extends Model
 
     public function schools()
     {
-        return $this->belongsToMany(School::class);
+        return $this->belongsToMany(School::class)->withTimestamps();
     }
 }
