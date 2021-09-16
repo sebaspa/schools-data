@@ -113,17 +113,21 @@ class SchoolController extends Controller
     {
         //
         $school->update($request->validated());
+        //dd($request->building_assigned);
         if ($request->building_assigned) {
             foreach ($request->building_assigned as $key => $value) {
                 $pivot_building_school[$value] = [
                     'quantity' => $request->quantity_assigned[$key]
                 ];
+                $school->images()
+                    ->updateOrCreate(
+                        ['imageable_id' => $school->id, 'contexts' => $request->building_assigned[$key]],
+                        ['url' => 'http://sebasja.com', 'contexts' => $request->building_assigned[$key]]
+                    );
             }
             $school->buildings()->sync($pivot_building_school);
         }
-        $school->buildings()->sync($pivot_building_school);
 
-        //dd($request->all());
         return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
     }
 

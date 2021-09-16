@@ -18,4 +18,9 @@ class Building extends Model
     {
         return $this->belongsToMany(School::class)->withTimestamps();
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
