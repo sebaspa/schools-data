@@ -47,6 +47,21 @@
         </div>
         <!-- /.card-body -->
     </div>
-    {{ $school->buildings }}
+
+    @if (!$school->buildings->isEmpty())
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Descripción</h3>
+            </div>
+            <div class="card-body">
+                @foreach ($school->buildings as $building)
+                    <strong><i class="fas fa-building mr-1"></i> {{ $building->name }}</strong>
+                    <p class="mt-3"><strong>Cantidad: </strong> {{ $building->pivot->quantity }}</p>
+                    <hr>
+
+                @endforeach
+            </div>
+        </div>
+    @endif
 
 @stop
