@@ -154,7 +154,7 @@ class SchoolController extends Controller
         }
 
 
-        return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
+        return redirect()->route('schools.show', $school)->with('info', 'Se agregaron las construcciones correctamente');
     }
 
     /**

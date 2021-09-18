@@ -6,6 +6,11 @@
 @stop
 
 @section('content')
+    @if (session('info'))
+        <div class="alert alert-success my-3">
+            <p class="mb-0">{{ session('info') }}</p>
+        </div>
+    @endif
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Principal</h3>
@@ -58,7 +63,6 @@
                     <strong><i class="fas fa-building mr-1"></i> {{ $building->name }}</strong>
                     <p class="mt-3"><strong>Cantidad: </strong> {{ $building->pivot->quantity }}</p>
                     <hr>
-
                 @endforeach
             </div>
         </div>
