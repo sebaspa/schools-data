@@ -50,6 +50,7 @@ Route::resource('roles', RoleController::class)->names('roles');
 
 Route::get('schools/get', [SchoolController::class, 'get'])->name('schools.get');
 Route::post('schools/deletebuilding', [SchoolController::class, 'deletebuilding'])->name('schools.deletebuilding');
+Route::patch('schools/updatebuildings/{school}', [SchoolController::class, 'updatebuildings'])->name('schools.updatebuildings');
 Route::resource('schools', SchoolController::class)->names('schools');
 
 Route::resource('buildings', BuildingController::class)->names('buildings');

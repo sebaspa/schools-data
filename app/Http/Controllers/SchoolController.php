@@ -102,7 +102,7 @@ class SchoolController extends Controller
         $school->load([
             'buildings',
         ])->get();
-        
+
         return view("school.edit", compact('school', 'buildings'));
     }
 
@@ -118,15 +118,41 @@ class SchoolController extends Controller
         //
         $school->update($request->validated());
 
+        return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
+    public function updatebuildings(Request $request, School $school)
+    {
+        //
+        $request->validate([
+            'building_assigned.*' => ['required', 'size:3'],
+            'quantity_assigned.*' => ['required', 'numeric', 'min:1', 'max:99'],
+            'building_assigned.*' => ['required', 'exists:buildings,id']
+        ], [
+            'quantity_assigned.*.required' => 'La cantidad es requrida',
+            'quantity_assigned.*.numeric' => 'La cantidad debe ser un valor numérico',
+            'quantity_assigned.*.min' => 'La cantidad debe ser mayor a :min',
+            'quantity_assigned.*.max' => 'La cantidad debe ser menor a :max',
+            'building_assigned.*.required' => 'La construcción es requrida',
+            'building_assigned.*.exists' => 'La construcción seleccionada no existe',
+        ]);
+
         if ($request->building_assigned) {
             foreach ($request->building_assigned as $key => $value) {
                 $pivot_building_school[$value] = [
-
                     'quantity' => $request->quantity_assigned[$key]
                 ];
             }
             $school->buildings()->sync($pivot_building_school);
         }
+
 
         return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
     }

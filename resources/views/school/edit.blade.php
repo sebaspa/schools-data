@@ -21,5 +21,14 @@
             </form>
         </div>
     </div>
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('schools.updatebuildings', $school) }}" method="POST">
+                @method('patch')
+                <div class="container-fluid">
+                    @include('school._form_building_school', ['btnText' => 'Editar'])
+                </div>
+            </form>
+        </div>
+    </div>
 @stop
-

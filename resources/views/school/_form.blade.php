@@ -85,63 +85,7 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <h4>Descripción</h4>
-    </div>
-    <div class="col-12">
-        <h5>Construcciones</h5>
-    </div>
-    <div class="constructions w-100">
-        @foreach ($school->buildings as $key => $building_assigned)
-            <div class="position-relative row w-100 mb-3">
-                <div class="col-12 col-md-6">
-                    <input type="hidden" name="building_school[]" value="{{ $building_assigned->pivot->id }}">
-                    <div class="form-group">
-                        <label>Construccion</label>
-                        <select name="building_assigned[]" class="form-control"
-                            value="{{ old('building_assigned', $building_assigned->name) }}">
-                            <option value="">Seleccione</option>
-                            @foreach ($buildings as $building)
-                                <option value="{{ $building->id }}"
-                                    {{ $building_assigned->pivot->building_id == $building->id ? 'selected' : '' }}>
-                                    {{ $building->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="form-group">
-                        <label>Cantidad</label>
-                        <input type="number" name="quantity_assigned[]" class="form-control"
-                            value="{{ old('quantity_assigned', $building_assigned->pivot->quantity) }}" min="1"
-                            required>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <input type="file" class="form-control" name="images[]" accept=".jpg, .jpeg, .png" multiple />
-                    <a href="#" class="btn btn-primary mt-2 btn-upload-images">Subir archivos</a>
-                </div>
-                <div class="col-12">
-                    @php
-                        $dataImages = App\Http\Controllers\SchoolController::multi_array_search_with_condition($school->images->toArray(), ['contexts' => $building_assigned->pivot->building_id]);
-                    @endphp
-                    @foreach ($dataImages as $item)
-                        {{ /*$item["url"]*/ }}
-                    @endforeach
 
-                </div>
-                <a href="#" class="position-absolute btn-delete-construction"
-                    data-id="{{ $building_assigned->pivot->id }}" style="right: 15px;">
-                    <i class="fa fa-trash text-danger"></i>
-                </a>
-            </div>
-        @endforeach
-    </div>
-    <div class="col-12">
-        <a href="#" class="btn btn-secondary" id="btn-add">Agregar construcción</a>
-    </div>
-</div>
 <div class="row mt-4">
     <div class="col-12">
         <button class="btn btn-primary" type="submit">{{ $btnText }} escuela</button>
@@ -184,77 +128,6 @@
                 </a>
             </div>
             `);
-        });
-
-        $("body").on("click", ".btn-delete-construction", function(e) {
-            e.preventDefault();
-            var construction_id = $(this).data("id");
-            if (construction_id) {
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('schools.deletebuilding') }}",
-                    data: {
-                        "id": construction_id,
-                        "_token": token
-                    },
-                    dataType: "JSON",
-                    success: function(response) {
-
-                    },
-                    error: function(error) {
-                        console.error(error);
-                    }
-                });
-            }
-            $(this).parent().remove();
-        });
-
-        $(".btn-upload-images").on("click", function(e) {
-            e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            var btnSend = $(this);
-            var inputFile = $(this).parent().find("input");
-            var idBuilding = $(this).parent().parent().find("select").val();
-            var formData = new FormData();
-            var images = inputFile[0];
-            let totalFiles = $(this).parent().find("input")[0].files.length; //Total files
-            let files = $(this).parent().find("input")[0];
-
-            for (let i = 0; i < totalFiles; i++) {
-                formData.append('images[]', files.files[i]);
-            }
-            formData.append('contexts', idBuilding);
-            formData.append('totalFiles', totalFiles);
-            formData.append('imageable_id', "{{ $school->id }}");
-
-            if (images.files.length > 0) {
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('images.storebuildings') }}",
-                    data: formData,
-                    enctype: 'multipart/form-data',
-                    dataType: 'json',
-                    processData: false,
-                    contentType: false,
-                    beforeSend: function() {
-                        btnSend.addClass('d-none');
-                    },
-                    success: function(response) {
-                        btnSend.addClass('d-inline-block');
-                        inputFile.val(null);
-                    },
-                    error: function(error) {
-                        btnSend.addClass('d-inline-block');
-                        console.log(`error`, error.responseJSON.errors);
-                    }
-                });
-            } else {
-                console.log("No Hay imagen");
-            }
         });
     </script>
 @endsection
