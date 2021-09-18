@@ -8,8 +8,8 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-secondary float-right"><i
-            class="fas fa-user-plus mr-1"></i>
+    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-secondary float-right">
+        <i class="fas fa-user-plus mr-1"></i>
         Crear escuela
     </a>
     <h1>Listado de escuelas</h1>
