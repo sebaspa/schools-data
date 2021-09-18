@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\DB;
 
@@ -52,3 +53,6 @@ Route::post('schools/deletebuilding', [SchoolController::class, 'deletebuilding'
 Route::resource('schools', SchoolController::class)->names('schools');
 
 Route::resource('buildings', BuildingController::class)->names('buildings');
+
+Route::post('images/storebuildings', [ImageController::class, 'storebuildings'])->name('images.storebuildings');
+Route::resource('images', ImageController::class)->names('images');

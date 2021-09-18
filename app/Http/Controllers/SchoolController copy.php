@@ -102,7 +102,6 @@ class SchoolController extends Controller
         $school->load([
             'buildings',
         ])->get();
-        
         return view("school.edit", compact('school', 'buildings'));
     }
 
@@ -120,8 +119,56 @@ class SchoolController extends Controller
 
         if ($request->building_assigned) {
             foreach ($request->building_assigned as $key => $value) {
-                $pivot_building_school[$value] = [
+                $image_path =  NULL;
 
+                if ($request->file("images")) {
+                    if ($school->images()->get()->toArray()) {
+                        $image_assigned = Image::where('imageable_type', 'App\Models\School')->where('imageable_id', $school->id)->where('contexts', $request->building_assigned[$key]);
+                        //$image_assigned = Image::where('imageable_type', 'App\Models\School')->where('imageable_id', $school->id)->where('contexts', "1")->get();
+                        if ($image_assigned->get()->toArray()) {
+                            //dd($image_assigned);
+                            $storage_image = $school->images()->get()->toArray()[$key]["url"];
+                            Storage::delete("/public/$storage_image");
+                            $image_assigned->delete();
+                        }
+                    } else {
+
+                        $image_path = $request->file("images")[$key]->store("schools/$school->id", "public");
+                        $image = InterventionImage::make(public_path("storage/{$image_path}"));
+                        $widthImage = $image->width();
+                        if ($widthImage > 1280) {
+                            $image->resize(1280, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
+                        }
+                        $image->encode('jpg', 80);
+                        $image->save();
+
+                        $school->images()
+                            ->updateOrCreate(
+                                ['imageable_id' => $school->id, 'contexts' => $request->building_assigned[$key]],
+                                ['url' => $image_path, 'contexts' => $request->building_assigned[$key]]
+                            );
+                    }
+                    /*
+                    if (isset($request->file("images")[$key])) {
+                        if ($request->file("images")[$key]) {
+
+                            $storage_image = $school->images()->get()->toArray()[$key]["url"];
+                            Storage::delete("/public/$storage_image");
+                        }
+                    } else {
+                        $school->images()
+                            ->updateOrCreate(
+                                ['imageable_id' => $school->id, 'contexts' => $request->building_assigned[$key]],
+                                ['contexts' => $request->building_assigned[$key]]
+                            );
+                    }
+                    */
+                }
+
+
+                $pivot_building_school[$value] = [
                     'quantity' => $request->quantity_assigned[$key]
                 ];
             }
@@ -182,25 +229,5 @@ class SchoolController extends Controller
 
             return response()->json($request->id, 200);
         }
-    }
-
-    public static function multi_array_search_with_condition($array, $condition)
-    {
-        $foundItems = array();
-
-        foreach ($array as $item) {
-            $find = TRUE;
-            foreach ($condition as $key => $value) {
-                if (isset($item[$key]) && $item[$key] == $value) {
-                    $find = TRUE;
-                } else {
-                    $find = FALSE;
-                }
-            }
-            if ($find) {
-                array_push($foundItems, $item);
-            }
-        }
-        return $foundItems;
     }
 }
