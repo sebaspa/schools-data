@@ -19,7 +19,7 @@ class ImageController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
-        $this->middleware(['can:schools.edit'])->only('addimages_school_building');
+        $this->middleware(['can:schools.edit'])->only('addimages_school_building', 'storebuildings');
     }
 
     /**
