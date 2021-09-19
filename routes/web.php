@@ -49,11 +49,13 @@ Route::resource('users', UserController::class)->names('users');
 Route::resource('roles', RoleController::class)->names('roles');
 
 Route::get('schools/get', [SchoolController::class, 'get'])->name('schools.get');
+Route::get('schools/images/buildings/{school}/{building}', [SchoolController::class, 'show_building_images'])->name('schools.show_building_images');
 Route::post('schools/deletebuilding', [SchoolController::class, 'deletebuilding'])->name('schools.deletebuilding');
 Route::patch('schools/updatebuildings/{school}', [SchoolController::class, 'updatebuildings'])->name('schools.updatebuildings');
 Route::resource('schools', SchoolController::class)->names('schools');
 
 Route::resource('buildings', BuildingController::class)->names('buildings');
 
-Route::post('images/storebuildings', [ImageController::class, 'storebuildings'])->name('images.storebuildings');
-Route::resource('images', ImageController::class)->names('images');
+Route::post('images/storebuildings/{school}', [ImageController::class, 'storebuildings'])->name('images.storebuildings');
+Route::get('images/add-images-school-building/{school}/{building}', [ImageController::class, 'addimages_school_building'])->name('images.addimages_school_building');
+//Route::resource('images', ImageController::class)->names('images');

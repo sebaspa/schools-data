@@ -2,6 +2,10 @@
 @section('title', 'Editar escuela')
 
 @section('content_header')
+    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-secondary float-right">
+        <i class="fas fa-eye mr-1"></i>
+        Ver escuela
+    </a>
     <h1>Editar escuela</h1>
 @stop
 

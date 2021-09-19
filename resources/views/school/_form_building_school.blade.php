@@ -38,7 +38,14 @@
                     data-id="{{ $building_assigned->pivot->id }}" style="right: 15px;">
                     <i class="fa fa-trash text-danger"></i>
                 </a>
+                <div class="col-12">
+                    <a href="{{ route('images.addimages_school_building', [$school->id, $building_assigned->id]) }}"
+                        class="btn btn-primary"><i class="fa fa-images"></i> Agregar fotos</a>
+                    <a href="{{ route('schools.show_building_images', [$school, $building_assigned->id]) }}"
+                        class="btn btn-success"><i class="fa fa-images"></i> Ver fotos</a>
+                </div>
             </div>
+            <hr />
         @endforeach
     </div>
     <div class="col-12">
@@ -90,8 +97,8 @@
         });
 
         $("body").on("click", ".btn-delete-construction", function(e) {
-            console.log(`e`, e);
             e.preventDefault();
+
             var construction_id = $(this).data("id");
             if (construction_id) {
                 $.ajax({

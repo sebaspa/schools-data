@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
 use App\Models\Image;
 use App\Models\School;
 use Illuminate\Http\Request;
@@ -11,13 +12,25 @@ use Intervention\Image\Facades\Image as InterventionImage;
 class ImageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+        $this->middleware(['can:schools.edit'])->only('addimages_school_building');
+    }
+
+    /**
+     * Muestra el formulario para agregar fotos según la escuela y la construccion.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function addimages_school_building(School $school, Building $building)
     {
         //
+        return view('images.add_school_building', compact('school', 'building'));
     }
 
     /**
@@ -47,11 +60,39 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storebuildings(Request $request)
+    public function storebuildings(Request $request, School $school)
     {
         //
-        if ($files = $request->file("images")) {
-            
+        if ($file = $request->file("image")) {
+            $request->validate([
+                'image' => 'required|mimes:jpg,jpeg,png|dimensions:min_width=600,min_height=400|max:3000',
+                'building' => 'required|exists:buildings,id',
+                'title' => 'required|min:3|max:200',
+                'description' => 'min:3'
+            ]);
+
+            $image_path = $file->store("schools/$school->id", "public");
+            $image = InterventionImage::make(public_path("storage/{$image_path}"));
+            $widthImage = $image->width();
+            if ($widthImage > 1280) {
+                $image->resize(1280, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            }
+            $image->encode('jpg', 80);
+            $image->save();
+            $school->images()->create(["url" => $image_path, "contexts" => $request->building, "title" => $request->title, "description" => $request->description]);
+        }
+
+        return redirect()->route('schools.show', $school)->with('info', 'Se agregó la foto correctamente');
+    }
+
+    public function storebuildings1(Request $request)
+    {
+        //
+        dd($request->file("image"));
+        if ($files = $request->file("image")) {
+
             $request->validate([
                 'images' => 'required',
                 'images.*' => ['mimes:jpg,jpeg,png', 'dimensions:min_width=600,min_height=400', 'max:4000']

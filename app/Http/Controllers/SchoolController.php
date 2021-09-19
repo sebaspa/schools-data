@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image as InterventionImage;
 
 class SchoolController extends Controller
 {
@@ -87,6 +85,22 @@ class SchoolController extends Controller
             'buildings',
         ])->get();
         return view('school.show', compact('school'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
+    public function show_building_images(School $school, Building $building)
+    {
+        //
+        $images = Image::where('imageable_type', 'App\Models\School')
+            ->where('imageable_id', $school->id)
+            ->where('contexts', $building->id)->get();
+
+        return view('school.show_building_images', compact('school', 'building', 'images'));
     }
 
     /**

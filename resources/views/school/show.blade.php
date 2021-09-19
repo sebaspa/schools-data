@@ -21,37 +21,42 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <strong><i class="fas fa-school mr-1"></i> Nombre</strong>
-            <p class="text-muted">{{ $school->name }}</p>
-            <hr>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-school mr-1"></i> Nombre</strong>
+                    <p class="text-muted">{{ $school->name }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Dirección</strong>
+                    <p class="text-muted">{{ $school->address }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-map-marked-alt mr-1"></i> Distrito</strong>
+                    <p class="text-muted">{{ $school->district }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-phone mr-1"></i> Teléfono</strong>
+                    <p class="text-muted">{{ $school->phone }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-fax mr-1"></i> Fax</strong>
+                    <p class="text-muted">{{ $school->fax }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="far fa-envelope mr-1"></i> Email</strong>
+                    <p class="text-muted">{{ $school->email }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-user-shield mr-1"></i> Responsable</strong>
+                    <p class="text-muted">{{ $school->liable }}</p>
+                </div>
+                <div class="col-12">
+                    <strong><i class="fas fa-question mr-1"></i> Otros</strong>
+                    <p class="text-muted">{{ $school->others != '' ? $school->others : 'No hay información.' }}</p>
+                </div>
+            </div>
 
-            <strong><i class="fas fa-map-marker-alt mr-1"></i> Dirección</strong>
-            <p class="text-muted">{{ $school->address }}</p>
-            <hr>
 
-            <strong><i class="fas fa-map-marked-alt mr-1"></i> Distrito</strong>
-            <p class="text-muted">{{ $school->district }}</p>
-            <hr>
-
-            <strong><i class="fas fa-phone mr-1"></i> Teléfono</strong>
-            <p class="text-muted">{{ $school->phone }}</p>
-            <hr>
-
-            <strong><i class="fas fa-fax mr-1"></i> Fax</strong>
-            <p class="text-muted">{{ $school->fax }}</p>
-            <hr>
-
-            <strong><i class="far fa-envelope mr-1"></i> Email</strong>
-            <p class="text-muted">{{ $school->email }}</p>
-            <hr>
-
-            <strong><i class="fas fa-user-shield mr-1"></i> Responsable</strong>
-            <p class="text-muted">{{ $school->liable }}</p>
-            <hr>
-
-            <strong><i class="fas fa-question mr-1"></i> Otros</strong>
-            <p class="text-muted">{{ $school->others != '' ? $school->others : 'No hay información.' }}</p>
-            <hr>
 
         </div>
         <!-- /.card-body -->
@@ -63,11 +68,24 @@
                 <h3 class="card-title">Descripción</h3>
             </div>
             <div class="card-body">
-                @foreach ($school->buildings as $building)
-                    <strong><i class="fas fa-building mr-1"></i> {{ $building->name }}</strong>
-                    <p class="mt-3"><strong>Cantidad: </strong> {{ $building->pivot->quantity }}</p>
-                    <hr>
-                @endforeach
+                <div class="row">
+                    @foreach ($school->buildings as $building)
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ $building->pivot->quantity }}</h3>
+
+                                    <p>{{ $building->name }}</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <a href="{{ route('schools.show_building_images', [$school, $building]) }}"
+                                    class="small-box-footer">Ver fotos <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     @endif
