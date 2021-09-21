@@ -30,7 +30,7 @@
                                     <img class="card-img-top" width="100%" height="240" style="object-fit: cover;"
                                         src="{{ asset('storage/' . $image->url) }}" alt="{{ $image->title }}">
                                     <form action="{{ route('images.destroy', $image) }}" method="POST"
-                                        class="position-absolute" style="top: 0px;">
+                                        class="position-absolute" style="top: 0px; right:10px;">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn" type="submit">
@@ -38,7 +38,7 @@
                                         </button>
                                     </form>
                                     <a href="{{ route('images.editimages_school_building', $image) }}"
-                                        class="position-absolute" style="right: 10px; top: 5px;">
+                                        class="position-absolute" style="left: 10px; top:5px;">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </div>
