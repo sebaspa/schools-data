@@ -91,14 +91,7 @@ class ImageController extends Controller
                 'description' => 'min:3'
             ]);
 
-            $image_path = $file->store("schools/$school->id", "public");
-            $image_intervention = InterventionImage::make(public_path("storage/{$image_path}"));
-            $widthImage = $image_intervention->width();
-            if ($widthImage > 1280) {
-                $image_intervention->widen(1280);
-            }
-            $image_intervention->encode('jpg', 80);
-            $image_intervention->save();
+            $image_path = $this->optimizeSchoolBuildingImage($file, $school->id);
             $school->images()->create(["url" => $image_path, "contexts" => $request->building, "title" => $request->title, "description" => $request->description]);
         }
 
@@ -131,15 +124,7 @@ class ImageController extends Controller
             $storage_image = $image_assigned->url;
             Storage::delete("/public/$storage_image");
 
-
-            $image_path = $file->store("schools/$request->school", "public");
-            $image_intervention = InterventionImage::make(public_path("storage/{$image_path}"));
-            $widthImage = $image_intervention->width();
-            if ($widthImage > 1280) {
-                $image_intervention->widen(1280);
-            }
-            $image_intervention->encode('jpg', 80);
-            $image_intervention->save();
+            $image_path = $this->optimizeSchoolBuildingImage($file, $request->school);
             $image->update(["url" => $image_path,  "title" => $request->title, "description" => $request->description]);
         } else {
             $image->update(["title" => $request->title, "description" => $request->description]);
@@ -197,5 +182,18 @@ class ImageController extends Controller
         //Storage::delete($image_storage);
         $image->delete();
         return redirect()->back();
+    }
+
+    protected function optimizeSchoolBuildingImage($file, $school){
+        $image_path = $file->store("schools/$school", "public");
+            $image_intervention = InterventionImage::make(public_path("storage/{$image_path}"));
+            $widthImage = $image_intervention->width();
+            if ($widthImage > 1280) {
+                $image_intervention->widen(1280);
+            }
+            $image_intervention->encode('jpg', 80);
+            $image_intervention->save();
+
+        return $image_path;
     }
 }
