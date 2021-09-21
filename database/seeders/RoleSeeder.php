@@ -20,11 +20,8 @@ class RoleSeeder extends Seeder
          */
 
         //Administrador
-        if (Role::findByName('Administrador')) {
-            $roleAdmin = Role::findByName('Administrador');
-        } else {
-            $roleAdmin = Role::create(['name' => 'Administrador']);
-        }
+
+        $roleAdmin = Role::create(['name' => 'Administrador']);
 
         /**
          * Crear los permisos y asignarlos a roles
