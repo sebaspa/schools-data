@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -62,3 +63,5 @@ Route::patch('images/updatebuildings/{image}', [ImageController::class, 'updateb
 Route::post('images/storebuildings/{school}', [ImageController::class, 'storebuildings'])->name('images.storebuildings');
 Route::delete('images/destroy/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
 //Route::resource('images', ImageController::class)->names('images');
+
+Route::resource('services', ServiceController::class)->names('services');

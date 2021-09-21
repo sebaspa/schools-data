@@ -272,6 +272,12 @@ return [
             'icon' => 'fas fa-fw fa-building',
             'can'  => 'buildings.index',
         ],
+        [
+            'text'  => 'Servicios',
+            'route' => 'services.index',
+            'icon' => 'fas fa-fw fa-sort-amount-up',
+            'can'  => 'services.index',
+        ],
         /*
         [
             'text'        => 'pages',

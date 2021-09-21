@@ -21,7 +21,11 @@ class RoleSeeder extends Seeder
 
         //Administrador
 
-        $roleAdmin = Role::create(['name' => 'Administrador']);
+        if (Role::findByName('Administrador')) {
+            $roleAdmin = Role::findByName('Administrador');
+        } else {
+            $roleAdmin = Role::create(['name' => 'Administrador']);
+        }
 
         /**
          * Crear los permisos y asignarlos a roles
@@ -29,7 +33,7 @@ class RoleSeeder extends Seeder
 
         //Dashboard
         //Permission::create(['name' => 'dashboard'])->syncRoles([$roleAdmin]);
-        
+
         //Usuarios
         Permission::create(['name' => 'users.index', 'description' => 'Ver listado de usuarios'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'users.edit', 'description' => 'Editar usuarios'])->syncRoles([$roleAdmin]);
@@ -50,5 +54,10 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'buildings.edit', 'description' => 'Editar construcciones'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'buildings.destroy', 'description' => 'Eliminar construcciones'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'buildings.show', 'description' => 'Ver detalle de construcciones'])->syncRoles([$roleAdmin]);
+        //Servicios
+        Permission::create(['name' => 'services.index', 'description' => 'Ver listado de servicios'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'services.edit', 'description' => 'Editar servicios'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'services.destroy', 'description' => 'Eliminar servicios'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'services.show', 'description' => 'Ver detalle de servicios'])->syncRoles([$roleAdmin]);
     }
 }
