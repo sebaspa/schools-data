@@ -24,7 +24,7 @@ class SchoolController extends Controller
         $this->middleware(['can:schools.index'])->only('index', 'get');
         $this->middleware(['can:schools.edit'])->only('edit', 'update', 'deletebuilding');
         $this->middleware(['can:schools.destroy'])->only('destroy', 'deletebuilding');
-        $this->middleware(['can:schools.show'])->only('show');
+        $this->middleware(['can:schools.show'])->only('show', 'show_building_images');
     }
 
     /**
@@ -224,23 +224,4 @@ class SchoolController extends Controller
         }
     }
 
-    public static function multi_array_search_with_condition($array, $condition)
-    {
-        $foundItems = array();
-
-        foreach ($array as $item) {
-            $find = TRUE;
-            foreach ($condition as $key => $value) {
-                if (isset($item[$key]) && $item[$key] == $value) {
-                    $find = TRUE;
-                } else {
-                    $find = FALSE;
-                }
-            }
-            if ($find) {
-                array_push($foundItems, $item);
-            }
-        }
-        return $foundItems;
-    }
 }

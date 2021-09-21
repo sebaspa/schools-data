@@ -6,6 +6,7 @@ use App\Models\Building;
 use App\Models\Image;
 use App\Models\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as InterventionImage;
 
@@ -19,7 +20,12 @@ class ImageController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
-        $this->middleware(['can:schools.edit'])->only('addimages_school_building', 'storebuildings');
+        $this->middleware(['can:schools.edit'])->only(
+            'addimages_school_building',
+            'editimages_school_building',
+            'storebuildings',
+            'updatebuildings'
+        );
     }
 
     /**
@@ -30,7 +36,21 @@ class ImageController extends Controller
     public function addimages_school_building(School $school, Building $building)
     {
         //
-        return view('images.add_school_building', compact('school', 'building'));
+        $image = new Image();
+        return view('images.add_school_building', compact('school', 'building', 'image'));
+    }
+
+    /**
+     * Muestra el formulario para agregar fotos según la escuela y la construccion.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editimages_school_building(Image $image)
+    {
+        //
+        $imageData = DB::table('images')->select('imageable_id', 'contexts')->where('id', $image->id)->first();
+        //dd($imageData);
+        return view('images.edit_school_building', compact('image', 'imageData'));
     }
 
     /**
@@ -72,62 +92,60 @@ class ImageController extends Controller
             ]);
 
             $image_path = $file->store("schools/$school->id", "public");
-            $image = InterventionImage::make(public_path("storage/{$image_path}"));
-            $widthImage = $image->width();
+            $image_intervention = InterventionImage::make(public_path("storage/{$image_path}"));
+            $widthImage = $image_intervention->width();
             if ($widthImage > 1280) {
-                $image->resize(1280, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                $image_intervention->widen(1280);
             }
-            $image->encode('jpg', 80);
-            $image->save();
+            $image_intervention->encode('jpg', 80);
+            $image_intervention->save();
             $school->images()->create(["url" => $image_path, "contexts" => $request->building, "title" => $request->title, "description" => $request->description]);
         }
 
-        return redirect()->route('schools.show', $school)->with('info', 'Se agregó la foto correctamente');
+        return redirect()->route('schools.show_building_images', [$school, $request->building])->with('info', 'Se agregó la foto correctamente');
     }
 
-    public function storebuildings1(Request $request)
+    /**
+     * Update a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatebuildings(Request $request, Image $image)
     {
         //
-        dd($request->file("image"));
-        if ($files = $request->file("image")) {
+        $request->validate([
+            'image' => 'nullable|mimes:jpg,jpeg,png|dimensions:min_width=600,min_height=400|max:3000',
+            'title' => 'required|min:3|max:200',
+            'building' => 'required|exists:buildings,id',
+            'school' => 'required|exists:schools,id',
+            'description' => 'min:3'
+        ]);
+        if ($file = $request->file("image")) {
 
-            $request->validate([
-                'images' => 'required',
-                'images.*' => ['mimes:jpg,jpeg,png', 'dimensions:min_width=600,min_height=400', 'max:4000']
-            ]);
-
-            $school = School::find($request->imageable_id);
             $image_assigned = Image::where('imageable_type', 'App\Models\School')
-                ->where('imageable_id', $request->imageable_id)
-                ->where('contexts', $request->contexts);
+                ->where('id', $image->id)
+                ->where('imageable_id', $request->school)
+                ->where('contexts', $request->building)->first();
 
-            if ($image_assigned->get()->toArray()) {
-                foreach ($image_assigned->get()->toArray() as $key => $value) {
-                    $storage_image = $value["url"];
-                    Storage::delete("/public/$storage_image");
-                }
+            $storage_image = $image_assigned->url;
+            Storage::delete("/public/$storage_image");
 
-                $image_assigned->delete();
+
+            $image_path = $file->store("schools/$request->school", "public");
+            $image_intervention = InterventionImage::make(public_path("storage/{$image_path}"));
+            $widthImage = $image_intervention->width();
+            if ($widthImage > 1280) {
+                $image_intervention->widen(1280);
             }
-
-            foreach ($files as $key => $file) {
-                $image_path = $file->store("schools/$request->imageable_id", "public");
-                $image = InterventionImage::make(public_path("storage/{$image_path}"));
-                $widthImage = $image->width();
-                if ($widthImage > 1280) {
-                    $image->resize(1280, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                }
-                $image->encode('jpg', 80);
-                $image->save();
-                $school->images()->create(["url" => $image_path, "contexts" => $request->contexts]);
-            }
+            $image_intervention->encode('jpg', 80);
+            $image_intervention->save();
+            $image->update(["url" => $image_path,  "title" => $request->title, "description" => $request->description]);
+        } else {
+            $image->update(["title" => $request->title, "description" => $request->description]);
         }
 
-        return response()->json($school, 200);
+        return redirect()->route('schools.show_building_images', [$request->school, $request->building])->with('info', 'Se editó la foto correctamente');
     }
 
     /**
@@ -174,5 +192,10 @@ class ImageController extends Controller
     public function destroy(Image $image)
     {
         //
+        Storage::delete("/public/$image->url");
+        //$image_storage = Storage::get($image->url);
+        //Storage::delete($image_storage);
+        $image->delete();
+        return redirect()->back();
     }
 }

@@ -56,6 +56,9 @@ Route::resource('schools', SchoolController::class)->names('schools');
 
 Route::resource('buildings', BuildingController::class)->names('buildings');
 
-Route::post('images/storebuildings/{school}', [ImageController::class, 'storebuildings'])->name('images.storebuildings');
 Route::get('images/add-images-school-building/{school}/{building}', [ImageController::class, 'addimages_school_building'])->name('images.addimages_school_building');
+Route::get('images/edit-images-school-building/{image}', [ImageController::class, 'editimages_school_building'])->name('images.editimages_school_building');
+Route::patch('images/updatebuildings/{image}', [ImageController::class, 'updatebuildings'])->name('images.updatebuildings');
+Route::post('images/storebuildings/{school}', [ImageController::class, 'storebuildings'])->name('images.storebuildings');
+Route::delete('images/destroy/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
 //Route::resource('images', ImageController::class)->names('images');
