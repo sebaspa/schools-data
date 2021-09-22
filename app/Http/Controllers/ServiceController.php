@@ -8,6 +8,20 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+        $this->middleware(['can:services.show'])->only('show');
+        $this->middleware(['can:services.index'])->only('index');
+        $this->middleware(['can:services.destroy'])->only('destroy');
+        $this->middleware(['can:services.edit'])->only('edit', 'update');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -15,6 +29,8 @@ class ServiceController extends Controller
     public function index()
     {
         //
+        $services = Service::paginate(20, ["id", "name"]);
+        return view('services.index', compact('services'));
     }
 
     /**
@@ -25,6 +41,7 @@ class ServiceController extends Controller
     public function create()
     {
         //
+        return view('services.create', ['service' => new Service()]);
     }
 
     /**
@@ -36,6 +53,12 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|min:3|max:100|unique:services,name'
+        ]);
+
+        Service::create($request->all());
+        return redirect()->route('services.index')->with('info', 'El servicio se creó con éxito.');
     }
 
     /**
@@ -58,6 +81,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         //
+        return view('services.edit', compact('service'));
     }
 
     /**
@@ -70,6 +94,13 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         //
+        $request->validate([
+            'name' => 'required|min:3|max:100|unique:services,name,' . request()->route('service')->id,
+        ]);
+
+        $service->update($request->all());
+
+        return redirect()->route('services.index')->with('info', 'El servicio se actualizó con éxito.');
     }
 
     /**
@@ -78,8 +109,17 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Request $request, $id)
     {
         //
+        if ($request->ajax()) {
+            $data = $request->validate([
+                'id' => 'required',
+            ]);
+            $service = new Service($data);
+            $service = Service::findOrFail($id);
+            $service->delete();
+            return response()->json($data, 200);
+        }
     }
 }
