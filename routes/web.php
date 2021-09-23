@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,7 @@ DB::listen(function ($query) {
     //echo "<div class='container'><pre>{$query->time}</pre></div>";
 });
 */
+
 
 Route::get('/', function () {
     return redirect()->to('dashboard');
@@ -65,3 +67,7 @@ Route::delete('images/destroy/{image}', [ImageController::class, 'destroy'])->na
 //Route::resource('images', ImageController::class)->names('images');
 
 Route::resource('services', ServiceController::class)->names('services');
+
+Route::get('plans/create/{school}', [PlanController::class, 'create'])->name('plans.create');
+Route::get('plans/show/{school}/{service_id?}', [PlanController::class, 'index'])->name('plans.index');
+Route::resource('plans', PlanController::class, ['except' => ['create', 'index']])->names('plans');

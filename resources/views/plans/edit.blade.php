@@ -1,25 +1,23 @@
 @extends('adminlte::page')
-@section('title', 'Crear escuela')
+@section('title', 'Editar plano')
 
 
 @section('content_header')
-    <h1>Crear escuela</h1>
+    <h1>Editar plano</h1>
 @stop
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <h4>Filiación</h4>
-        </div>
         <div class="card-body">
             @if (session('info'))
                 <div class="alert alert-success my-3">
                     <p class="mb-0">{{ session('info') }}</p>
                 </div>
             @endif
-            <form action="{{ route('schools.store') }}" method="POST">
+            <form action="{{ route('plans.update', ['plan' => $plan]) }}" method="POST" enctype="multipart/form-data">
+                @method('patch')
                 <div class="container-fluid">
-                    @include('school._form', ['btnText' => 'Crear'])
+                    @include('plans._form', ['btnText' => 'Editar'])
                 </div>
             </form>
         </div>

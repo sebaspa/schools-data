@@ -1,9 +1,6 @@
 @csrf
 
 <div class="row">
-    <div class="col-12">
-        <h4>Construcciones</h4>
-    </div>
     <div class="constructions w-100">
         @foreach ($school->buildings as $key => $building_assigned)
             <div class="position-relative row w-100 mb-3">

@@ -55,9 +55,6 @@
                     <p class="text-muted">{{ $school->others != '' ? $school->others : 'No hay información.' }}</p>
                 </div>
             </div>
-
-
-
         </div>
         <!-- /.card-body -->
     </div>

@@ -1,8 +1,5 @@
 @csrf
 <div class="row">
-    <div class="col-12">
-        <h4>Filiación</h4>
-    </div>
     <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="name">Nombre</label>
