@@ -43,9 +43,9 @@
                                     <a href="{{ route('plans.edit', $plan) }}" class="mx-1 btn btn-xs btn-primary">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('plans.destroy', $plan) }}">
+                                    <form action="{{ route('plans.destroy', $plan) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
+                                        @method("DELETE")
                                         <button class="mx-1 btn btn-xs btn-danger btn-delete">
                                             <i class="fa fa-trash"></i>
                                         </button>
