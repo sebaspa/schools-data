@@ -128,5 +128,7 @@ class ElectricController extends Controller
     public function destroy(Electric $electric)
     {
         //
+        $electric->delete();
+        return redirect()->route('electrics.index', $electric->school_id)->with('info', 'Se eliminó la energía correctamente.');
     }
 }
