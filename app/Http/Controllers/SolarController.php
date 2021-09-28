@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 class SolarController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+
+        $this->middleware(['can:schools.edit'])->only('index', 'create', 'store', 'show', 'edit', 'update', 'destroy');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
