@@ -46,11 +46,9 @@
             <h3>Planos</h3>
         </div>
         <div class="card-body">
-            <a href="{{ route('plans.create', $school) }}" class="btn btn-primary">
-                <i class="fa fa-drafting-compass mr-2"></i> Agregar plano
-            </a>
             <a href="{{ route('plans.index', $school) }}" class="btn btn-primary">
-                <i class="fa fa-eye mr-2"></i> Ver planos</a>
+                <i class="fa fa-drafting-compass mr-2"></i> Planos
+            </a>
         </div>
     </div>
     <div class="card">
