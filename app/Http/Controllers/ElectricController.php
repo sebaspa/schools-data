@@ -90,6 +90,7 @@ class ElectricController extends Controller
     public function edit(Electric $electric)
     {
         //
+        return view('energy.electric.edit', compact('electric'));
     }
 
     /**
@@ -102,6 +103,20 @@ class ElectricController extends Controller
     public function update(Request $request, Electric $electric)
     {
         //
+        $request->validate([
+            'contract_type' => 'required|min:3',
+            'supply_number' => 'required|min:3',
+            'number_light_meter' => 'required|min:3',
+            'hired_potency' => 'required|min:3',
+            'total_potency' => 'required|min:3',
+            'general_rush' => 'required|min:3',
+            'number_circuits' => 'required|min:3',
+            'partial_squares' => 'required|min:3',
+            'others' => 'nullable|min:3'
+        ]);
+
+        $electric->update($request->all());
+        return redirect()->route('electrics.index', $electric->school_id)->with('info', 'Se modificó la energía correctamente.');
     }
 
     /**
