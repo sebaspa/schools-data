@@ -20,7 +20,7 @@ class PlanController extends Controller
     {
         $this->middleware(['auth']);
 
-        $this->middleware(['can:schools.edit'])->only('show', 'index', 'edit', 'update', 'destroy');
+        $this->middleware(['can:schools.edit'])->only('index', 'create', 'store', 'show', 'edit', 'update', 'destroy');
     }
 
     /**
