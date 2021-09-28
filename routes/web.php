@@ -11,6 +11,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SolarController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -76,3 +77,7 @@ Route::resource('plans', PlanController::class, ['except' => ['create', 'index']
 Route::get('electrics/create/{school}', [ElectricController::class, 'create'])->name('electrics.create');
 Route::get('electrics/show/{school}/{service_id?}', [ElectricController::class, 'index'])->name('electrics.index');
 Route::resource('electrics', ElectricController::class, ['except' => ['create', 'index']])->names('electrics');
+
+Route::get('solars/create/{school}', [SolarController::class, 'create'])->name('solars.create');
+Route::get('solars/show/{school}/{service_id?}', [SolarController::class, 'index'])->name('solars.index');
+Route::resource('solars', SolarController::class, ['except' => ['create', 'index']])->names('solars');

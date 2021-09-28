@@ -59,6 +59,9 @@
             <a href="{{ route('electrics.index', $school) }}" class="btn btn-primary">
                 <i class="fa fa-bolt mr-2"></i> Eléctrica
             </a>
+            <a href="{{ route('solars.index', $school) }}" class="btn btn-primary">
+                <i class="fa fa-sun mr-2"></i> Solar
+            </a>
         </div>
     </div>
 @stop
