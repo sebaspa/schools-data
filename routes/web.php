@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ElectricController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SchoolController;
@@ -71,3 +72,7 @@ Route::resource('services', ServiceController::class)->names('services');
 Route::get('plans/create/{school}', [PlanController::class, 'create'])->name('plans.create');
 Route::get('plans/show/{school}/{service_id?}', [PlanController::class, 'index'])->name('plans.index');
 Route::resource('plans', PlanController::class, ['except' => ['create', 'index']])->names('plans');
+
+Route::get('electrics/create/{school}', [ElectricController::class, 'create'])->name('electrics.create');
+Route::get('electrics/show/{school}/{service_id?}', [ElectricController::class, 'index'])->name('electrics.index');
+Route::resource('electrics', ElectricController::class, ['except' => ['create', 'index']])->names('electrics');

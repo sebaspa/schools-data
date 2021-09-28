@@ -53,4 +53,14 @@
                 <i class="fa fa-eye mr-2"></i> Ver planos</a>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header">
+            <h4>Tipos de Energía</h4>
+        </div>
+        <div class="card-body">
+            <a href="{{ route('electrics.index', $school) }}" class="btn btn-primary">
+                <i class="fa fa-bolt mr-2"></i> Eléctrica
+            </a>
+        </div>
+    </div>
 @stop
