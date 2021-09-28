@@ -79,6 +79,7 @@ class ElectricController extends Controller
     public function show(Electric $electric)
     {
         //
+        return view('energy.electric.show', compact('electric'));
     }
 
     /**

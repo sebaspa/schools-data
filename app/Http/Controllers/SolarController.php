@@ -76,6 +76,7 @@ class SolarController extends Controller
     public function show(Solar $solar)
     {
         //
+        return view('energy.solar.show', compact('solar'));
     }
 
     /**
