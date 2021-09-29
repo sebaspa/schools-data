@@ -61,6 +61,7 @@ Route::post('schools/deletebuilding', [SchoolController::class, 'deletebuilding'
 Route::patch('schools/updatebuildings/{school}', [SchoolController::class, 'updatebuildings'])->name('schools.updatebuildings');
 Route::resource('schools', SchoolController::class)->names('schools');
 
+Route::get('buildings/school/{school}', [BuildingController::class, 'index_by_school'])->name('buildings.index_by_school');
 Route::resource('buildings', BuildingController::class)->names('buildings');
 
 Route::get('images/add-images-school-building/{school}/{building}', [ImageController::class, 'addimages_school_building'])->name('images.addimages_school_building');

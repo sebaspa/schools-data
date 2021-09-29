@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="constructions w-100">
-        @foreach ($school->buildings as $key => $building_assigned)
+        @forelse ($school->buildings as $key => $building_assigned)
             <div class="position-relative row w-100 mb-3">
                 <div class="col-12 col-md-6">
                     <input type="hidden" name="building_school[]" value="{{ $building_assigned->pivot->id }}">
@@ -43,7 +43,11 @@
                 </div>
             </div>
             <hr />
-        @endforeach
+            @empty
+            <div class="alert alert-warning my-3">
+                <p class="mb-0">No hay construcciones asignadas.</p>
+            </div>
+            @endforelse
     </div>
     <div class="col-12">
         <a href="#" class="btn btn-secondary" id="btn-add">Agregar construcción</a>

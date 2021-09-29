@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBuildRequest;
 use App\Http\Requests\UpdateBuildRequest;
 use App\Models\Building;
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class BuildingController extends Controller
@@ -21,6 +22,16 @@ class BuildingController extends Controller
         $this->middleware(['can:buildings.edit'])->only('edit', 'update');
         $this->middleware(['can:buildings.destroy'])->only('destroy');
         $this->middleware(['can:buildings.show'])->only('show');
+    }
+
+    public function index_by_school(School $school)
+    {
+        $buildings = Building::all(['id', 'name']);
+        $school->load([
+            'buildings',
+        ])->get();
+
+        return view('building.byschool', compact('school', 'buildings'));
     }
 
     /**

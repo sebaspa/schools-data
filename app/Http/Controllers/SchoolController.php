@@ -112,12 +112,7 @@ class SchoolController extends Controller
     public function edit(School $school)
     {
         //
-        $buildings = Building::all(['id', 'name']);
-        $school->load([
-            'buildings',
-        ])->get();
-
-        return view("school.edit", compact('school', 'buildings'));
+        return view("school.edit", compact('school'));
     }
 
     /**
@@ -168,7 +163,7 @@ class SchoolController extends Controller
         }
 
 
-        return redirect()->route('schools.show', $school)->with('info', 'Se agregaron las construcciones correctamente');
+        return redirect()->route('schools.show', $school)->with('info', 'Se modificaron las construcciones correctamente');
     }
 
     /**

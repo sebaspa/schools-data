@@ -8,18 +8,17 @@
     </a>
     <h1>Editar escuela</h1>
 @stop
-
+@if (session('info'))
+    <div class="alert alert-success my-3">
+        <p class="mb-0">{{ session('info') }}</p>
+    </div>
+@endif
 @section('content')
     <div class="card">
         <div class="card-header">
             <h4>Filiación</h4>
         </div>
         <div class="card-body">
-            @if (session('info'))
-                <div class="alert alert-success my-3">
-                    <p class="mb-0">{{ session('info') }}</p>
-                </div>
-            @endif
             <form action="{{ route('schools.update', ['school' => $school]) }}" method="POST">
                 @method('patch')
                 <div class="container-fluid">
@@ -33,12 +32,9 @@
             <h4>Construcciones</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('schools.updatebuildings', $school) }}" method="POST">
-                @method('patch')
-                <div class="container-fluid">
-                    @include('school._form_building_school', ['btnText' => 'Editar'])
-                </div>
-            </form>
+            <a href="{{ route('buildings.index_by_school', $school) }}" class="btn btn-primary">
+                <i class="fa fa-building mr-2"></i> Construcciones
+            </a>
         </div>
     </div>
     <div class="card">
