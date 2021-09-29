@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AirconditioningController;
 use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -81,3 +82,7 @@ Route::resource('electrics', ElectricController::class, ['except' => ['create', 
 Route::get('solars/create/{school}', [SolarController::class, 'create'])->name('solars.create');
 Route::get('solars/show/{school}/{service_id?}', [SolarController::class, 'index'])->name('solars.index');
 Route::resource('solars', SolarController::class, ['except' => ['create', 'index']])->names('solars');
+
+Route::get('airconditionings/create/{school}', [AirconditioningController::class, 'create'])->name('airconditionings.create');
+Route::get('airconditionings/show/{school}/{service_id?}', [AirconditioningController::class, 'index'])->name('airconditionings.index');
+Route::resource('airconditionings', AirconditioningController::class, ['except' => ['create', 'index']])->names('airconditionings');

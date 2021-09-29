@@ -62,6 +62,9 @@
             <a href="{{ route('solars.index', $school) }}" class="btn btn-primary">
                 <i class="fa fa-sun mr-2"></i> Solar
             </a>
+            <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-primary">
+                <i class="fa fa-fan mr-2"></i> Climatización
+            </a>
         </div>
     </div>
 @stop
