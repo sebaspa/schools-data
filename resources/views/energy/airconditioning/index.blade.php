@@ -23,6 +23,7 @@
                         <th>ID</th>
                         <th>Marca</th>
                         <th>Modelo</th>
+                        <th>Tipo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -32,6 +33,9 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->mark }}</td>
                             <td>{{ $item->model }}</td>
+                            <td>
+                                {{$item->subtypeenergy_id == 1 ? 'Centralizado' : 'Parcial' }}
+                            </td>
                             <td width="130">
                                 <div class="d-flex">
                                     <a href="{{ route('airconditionings.show', $item) }}" class="mx-1 btn btn-xs btn-success">
@@ -52,7 +56,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <p>No se encontraron resultados.</p>
                             </td>
                         </tr>

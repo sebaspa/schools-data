@@ -22,6 +22,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Número de radiadores</th>
+                        <th>Tipo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,6 +31,9 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->number_radiators }}</td>
+                            <td>
+                                {{$item->subtypeenergy_id == 3 ? 'Eléctrico' : 'Combustible' }}
+                            </td>
                             <td width="130">
                                 <div class="d-flex">
                                     <a href="{{ route('heatings.show', $item) }}" class="mx-1 btn btn-xs btn-success">
