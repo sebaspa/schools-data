@@ -65,6 +65,9 @@
             <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-primary">
                 <i class="fa fa-fan mr-2"></i> Climatización
             </a>
+            <a href="{{ route('heatings.index', $school) }}" class="btn btn-primary">
+                <i class="fa fa-fire mr-2"></i> Calefacción
+            </a>
         </div>
     </div>
 @stop

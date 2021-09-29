@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ElectricController;
+use App\Http\Controllers\HeatingController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SchoolController;
@@ -86,3 +87,7 @@ Route::resource('solars', SolarController::class, ['except' => ['create', 'index
 Route::get('airconditionings/create/{school}', [AirconditioningController::class, 'create'])->name('airconditionings.create');
 Route::get('airconditionings/show/{school}/{service_id?}', [AirconditioningController::class, 'index'])->name('airconditionings.index');
 Route::resource('airconditionings', AirconditioningController::class, ['except' => ['create', 'index']])->names('airconditionings');
+
+Route::get('heatings/create/{school}', [HeatingController::class, 'create'])->name('heatings.create');
+Route::get('heatings/show/{school}/{service_id?}', [HeatingController::class, 'index'])->name('heatings.index');
+Route::resource('heatings', HeatingController::class, ['except' => ['create', 'index']])->names('heatings');

@@ -58,11 +58,11 @@ class AirconditioningController extends Controller
             $request->validate([
                 'school_id' => 'required|exists:schools,id',
                 'subtypeenergy_id' => 'required|exists:subtypeenergy,id',
-                'potency' => 'required|min:3',
-                'frigoria' => 'required|min:3',
-                'mark' => 'required|min:3',
-                'model' => 'required|min:3',
-                'others' => 'nullable|min:3'
+                'potency' => 'required',
+                'frigoria' => 'required',
+                'mark' => 'required',
+                'model' => 'required',
+                'others' => 'nullable'
             ]);
 
             Airconditioning::create([
@@ -78,11 +78,11 @@ class AirconditioningController extends Controller
             $request->validate([
                 'school_id' => 'required|exists:schools,id',
                 'subtypeenergy_id' => 'required|exists:subtypeenergy,id',
-                'number_groups' => 'required|min:3',
-                'types' => 'required|min:3',
-                'mark' => 'required|min:3',
-                'model' => 'required|min:3',
-                'others' => 'nullable|min:3'
+                'number_groups' => 'required',
+                'types' => 'required',
+                'mark' => 'required',
+                'model' => 'required',
+                'others' => 'nullable'
             ]);
 
             Airconditioning::create([
