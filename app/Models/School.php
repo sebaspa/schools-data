@@ -25,13 +25,18 @@ class School extends Model
         'others',
     ];
 
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
     public function buildings()
     {
         return $this->belongsToMany(Building::class)->withPivot('id', 'quantity')->withTimestamps();
     }
 
-    public function images()
+    public function plans()
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->belongsToMany(Plan::class);
     }
 }

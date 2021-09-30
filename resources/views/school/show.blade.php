@@ -62,7 +62,7 @@
     @if (!$school->buildings->isEmpty())
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Descripción</h3>
+                <h3 class="card-title">Construcciones</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -86,5 +86,50 @@
             </div>
         </div>
     @endif
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Planimetría</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-2">
+                    <a href="{{ route('plans.index', $school) }}" class="btn btn-primary">
+                        <i class="fa fa-drafting-compass mr-2"></i> Ver Planos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Tipos de energía</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-2">
+                    <a href="{{ route('electrics.index', $school) }}" class="btn btn-block btn-primary">
+                        <i class="fa fa-bolt mr-2"></i> Eléctrica
+                    </a>
+                </div>
+                <div class="col-12 col-md-2">
+                    <a href="{{ route('solars.index', $school) }}" class="btn btn-block btn-primary">
+                        <i class="fa fa-sun mr-2"></i> Solar
+                    </a>
+                </div>
+                <div class="col-12 col-md-2">
+                    <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-block btn-primary">
+                        <i class="fa fa-fan mr-2"></i> Climatización
+                    </a>
+                </div>
+                <div class="col-12 col-md-2">
+                    <a href="{{ route('heatings.index', $school) }}" class="btn btn-block btn-primary">
+                        <i class="fa fa-fire mr-2"></i> Calefacción
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @stop
