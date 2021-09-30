@@ -20,11 +20,11 @@
     @php($password_reset_url = $password_reset_url ? url($password_reset_url) : '')
 @endif
 
+<div class="mb-4">
+    <img src="/vendor/login/logo.png" width="288" height="auto" alt="logo">
+</div>
 @section('auth_header', __('adminlte::adminlte.login_message'))
 
-<div class="mb-4">
-    <img src="/vendor/login/logo.png"  alt="logo">
-</div>
 @section('auth_body')
     <form action="{{ $login_url }}" method="post">
         {{ csrf_field() }}
@@ -80,6 +80,14 @@
 
     </form>
 @stop
+@section('css')
+    <style>
+        .login-page .login-logo {
+            display: none;
+        }
+
+    </style>
+@endsection
 {{-- @section('auth_footer')
     {{-- Password reset link --}}{{-- @if ($password_reset_url)
         <p class="my-0">
@@ -97,9 +105,3 @@
         </p>
     @endif
 @stop --}}
-
-<style>
-    .login-page .login-logo {
-        display: none;
-    }
-</style>
