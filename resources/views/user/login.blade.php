@@ -22,6 +22,9 @@
 
 @section('auth_header', __('adminlte::adminlte.login_message'))
 
+<div class="mb-4">
+    <img src="/vendor/login/logo.png"  alt="logo">
+</div>
 @section('auth_body')
     <form action="{{ $login_url }}" method="post">
         {{ csrf_field() }}
@@ -77,10 +80,8 @@
 
     </form>
 @stop
-{{--
-@section('auth_footer')
-    {{-- Password reset link --}}{{--
-    @if ($password_reset_url)
+{{-- @section('auth_footer')
+    {{-- Password reset link --}}{{-- @if ($password_reset_url)
         <p class="my-0">
             <a href="{{ $password_reset_url }}">
                 {{ __('adminlte::adminlte.i_forgot_my_password') }}
@@ -88,13 +89,17 @@
         </p>
     @endif
 
-    {{-- Register link --}}{{--
-    @if ($register_url)
+    {{-- Register link --}}{{-- @if ($register_url)
         <p class="my-0">
             <a href="{{ $register_url }}">
                 {{ __('adminlte::adminlte.register_a_new_membership') }}
             </a>
         </p>
     @endif
-@stop
---}}
+@stop --}}
+
+<style>
+    .login-page .login-logo {
+        display: none;
+    }
+</style>
