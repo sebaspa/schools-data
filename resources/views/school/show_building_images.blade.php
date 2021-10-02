@@ -3,7 +3,7 @@
 @section('title', 'Ver imágenes')
 
 @section('content_header')
-    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-eye mr-1"></i>
         Ver escuela
     </a>

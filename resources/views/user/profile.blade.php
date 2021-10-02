@@ -65,7 +65,7 @@
                             <div class="col-12 mb-4">
                                 <label class="d-block">Roles asignados:</label>
                                 @forelse ($user->roles->pluck('name') as $role)
-                                    <span class="badge bg-primary">
+                                    <span class="badge bg-warning">
                                         {{ $role }}
                                     </span>
                                     @empty
@@ -77,7 +77,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button class="btn btn-primary" type="submit">Modificar mis datos</button>
+                                <button class="btn btn-warning" type="submit">Modificar mis datos</button>
                             </div>
                         </div>
                     </div>

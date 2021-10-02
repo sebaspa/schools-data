@@ -2,7 +2,7 @@
 @section('title', 'Escuela')
 
 @section('content_header')
-    <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-edit mr-1"></i>
         Editar escuela
     </a>
@@ -15,7 +15,7 @@
             <p class="mb-0">{{ session('info') }}</p>
         </div>
     @endif
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Principal</h3>
         </div>
@@ -60,7 +60,7 @@
     </div>
 
     @if (!$school->buildings->isEmpty())
-        <div class="card card-primary">
+        <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Construcciones</h3>
             </div>
@@ -87,14 +87,14 @@
         </div>
     @endif
 
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Planimetría</h3>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-2">
-                    <a href="{{ route('plans.index', $school) }}" class="btn btn-primary">
+                    <a href="{{ route('plans.index', $school) }}" class="btn btn-warning">
                         <i class="fa fa-drafting-compass mr-2"></i> Ver Planos
                     </a>
                 </div>

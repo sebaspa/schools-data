@@ -8,11 +8,11 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-user-plus mr-1"></i>
-        Crear escuela
+        Crear filiación
     </a>
-    <h1>Listado de escuelas</h1>
+    <h1>Listado de filiaciónes</h1>
 @stop
 
 @section('content')
@@ -85,7 +85,7 @@
             Swal.fire({
                 type: 'warning',
                 title: 'Estas seguro?',
-                text: "Se va a eliminar una escuela",
+                text: "Se va a eliminar una filiación",
                 showCancelButton: true,
                 confirmButtonText: 'Eliminar',
                 cancelButtonText: 'Cancelar',
@@ -104,12 +104,12 @@
                             if (response.errors) {
                                 Swal.fire({
                                     type: 'danger',
-                                    text: "No se ha podido eliminar la escuela.",
+                                    text: "No se ha podido eliminar la filiación.",
                                 });
                             } else {
                                 Swal.fire({
                                     type: 'success',
-                                    text: "Escuela eliminada correctamente.",
+                                    text: "Filiación eliminada correctamente.",
                                 });
 
                             }
@@ -117,7 +117,7 @@
                         error: function(error) {
                             Swal.fire({
                                 type: 'error',
-                                text: "No se ha podido eliminar la escuela.",
+                                text: "No se ha podido eliminar la filiación.",
                             });
                             console.error(error);
                         }

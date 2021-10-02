@@ -9,7 +9,7 @@
 
 
 @section('content_header')
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-secondary float-right"><i class="fas fa-user-plus mr-1"></i>
+    <a href="{{ route('users.create') }}" class="btn btn-sm btn-warning float-right"><i class="fas fa-user-plus mr-1"></i>
         Crear usuario
     </a>
     <h1>Listado de usuarios</h1>

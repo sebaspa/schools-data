@@ -23,6 +23,6 @@
         </div>
     </div>
     <div class="col-12 mt-4">
-        <button class="btn btn-primary" type="submit">{{ $btnText }} rol</button>
+        <button class="btn btn-warning" type="submit">{{ $btnText }} rol</button>
     </div>
 </div>

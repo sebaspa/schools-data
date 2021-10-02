@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card card-primary card-outline">
+                        <div class="card card-warning card-outline">
                             <div class="card-body box-profile">
 
                                 <h3 class="profile-username text-center">{{ $user->name }} {{ $user->last_name }}</h3>
@@ -39,7 +39,7 @@
 
                                 <hr>
 
-                                <a href="{{ route('users.edit', $user) }}" class="btn btn-primary btn-block">
+                                <a href="{{ route('users.edit', $user) }}" class="btn btn-warning btn-block">
                                     <b>Editar información</b>
                                 </a>
                             </div>

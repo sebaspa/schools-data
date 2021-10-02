@@ -23,6 +23,6 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <button class="btn btn-primary" type="submit">{{ $btnText }} contrucción</button>
+        <button class="btn btn-warning" type="submit">{{ $btnText }} contrucción</button>
     </div>
 </div>
