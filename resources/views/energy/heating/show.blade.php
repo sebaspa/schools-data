@@ -16,7 +16,7 @@
         </div>
     @endif
     @if ($heating->subtypeenergy_id == 3)
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Calefacción - Eléctrico</h3>
         </div>

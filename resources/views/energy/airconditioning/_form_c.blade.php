@@ -12,7 +12,7 @@
     </div>
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="frigoria">Frigoria</label>
+            <label for="frigoria">Frigorias</label>
             <input type="text" class="form-control @error('frigoria') is-invalid @enderror" id="frigoria"
                 name="frigoria" value="{{ old('frigoria', $airconditioning->frigoria) }}" required>
             @error('frigoria')
@@ -51,6 +51,6 @@
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">{{ $btnText }}</button>
+        <button type="submit" class="btn btn-warning">{{ $btnText }}</button>
     </div>
 </div>

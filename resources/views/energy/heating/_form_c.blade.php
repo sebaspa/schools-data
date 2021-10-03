@@ -22,7 +22,7 @@
     </div>
     <div class="col-12 col-md-6">
         <div class="form-group">
-            <label for="type_boiler">Tipo de cladera</label>
+            <label for="type_boiler">Tipo de caldera</label>
             <input type="text" class="form-control @error('type_boiler') is-invalid @enderror" id="type_boiler"
                 name="type_boiler" value="{{ old('type_boiler', $heating->type_boiler) }}" required>
             @error('type_boiler')
@@ -61,6 +61,6 @@
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">{{ $btnText }}</button>
+        <button type="submit" class="btn btn-warning">{{ $btnText }}</button>
     </div>
 </div>

@@ -15,6 +15,7 @@
             <label id="document">Documento</label>
             <input type="file" id="document" name="document" class="form-control @error('document') is-invalid @enderror"
                 accept=".jpg, .jpeg, .png, .pdf">
+            <small>Se debe subir archivos formato .jpg, .png y .pdf</small>
             @error('document')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -34,14 +35,13 @@
     <div class="col-12">
         <div class="form-group">
             <label id="decription">Descripción</label>
-            <textarea name="description" id="description" rows="5"
-                class="form-control @error('description') is-invalid @enderror">{{ old('description', $plan->description) }}</textarea>
+            <textarea name="description" id="description" rows="5" class="form-control @error('description') is-invalid @enderror">{{ old('description', $plan->description) }}</textarea>
             @error('description')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">{{$btnText}} plano</button>
+        <button type="submit" class="btn btn-warning">{{$btnText}}</button>
     </div>
 </div>

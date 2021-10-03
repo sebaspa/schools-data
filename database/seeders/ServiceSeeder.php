@@ -16,6 +16,10 @@ class ServiceSeeder extends Seeder
     {
         //
         Service::create([
+            'name' => 'Colegio',
+        ]);
+
+        Service::create([
             'name' => 'Generales',
         ]);
 
@@ -29,6 +33,10 @@ class ServiceSeeder extends Seeder
 
         Service::create([
             'name' => 'Fontanería',
+        ]);
+
+        Service::create([
+            'name' => 'Otros',
         ]);
     }
 }

@@ -2,7 +2,7 @@
 @section('title', 'Calefacción')
 
 @section('content_header')
-    <a href="{{ route('heatings.create', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('heatings.create', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-user-cog mr-1"></i>
         Crear Calefacción
     </a>
@@ -36,7 +36,7 @@
                             </td>
                             <td width="130">
                                 <div class="d-flex">
-                                    <a href="{{ route('heatings.show', $item) }}" class="mx-1 btn btn-xs btn-success">
+                                    <a href="{{ route('heatings.show', $item) }}" class="mx-1 btn btn-xs btn-warning">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <a href="{{ route('heatings.edit', $item) }}" class="mx-1 btn btn-xs btn-primary">

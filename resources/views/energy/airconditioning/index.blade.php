@@ -2,7 +2,7 @@
 @section('title', 'Climatización')
 
 @section('content_header')
-    <a href="{{ route('airconditionings.create', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('airconditionings.create', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-user-cog mr-1"></i>
         Crear Climatización
     </a>
@@ -38,7 +38,7 @@
                             </td>
                             <td width="130">
                                 <div class="d-flex">
-                                    <a href="{{ route('airconditionings.show', $item) }}" class="mx-1 btn btn-xs btn-success">
+                                    <a href="{{ route('airconditionings.show', $item) }}" class="mx-1 btn btn-xs btn-warning">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <a href="{{ route('airconditionings.edit', $item) }}" class="mx-1 btn btn-xs btn-primary">

@@ -2,7 +2,7 @@
 @section('title', 'Energía solar')
 
 @section('content_header')
-    <a href="{{ route('solars.create', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('solars.create', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-user-cog mr-1"></i>
         Crear energía solar
     </a>
@@ -34,7 +34,7 @@
                             <td>{{ $item->number_panels }}</td>
                             <td width="130">
                                 <div class="d-flex">
-                                    <a href="{{ route('solars.show', $item) }}" class="mx-1 btn btn-xs btn-success">
+                                    <a href="{{ route('solars.show', $item) }}" class="mx-1 btn btn-xs btn-warning">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <a href="{{ route('solars.edit', $item) }}" class="mx-1 btn btn-xs btn-primary">

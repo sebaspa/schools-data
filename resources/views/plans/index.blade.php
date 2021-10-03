@@ -1,12 +1,12 @@
 @extends('adminlte::page')
-@section('title', 'Planos')
+@section('title', 'Planimetría')
 
 @section('content_header')
-    <a href="{{ route('plans.create', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('plans.create', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-user-cog mr-1"></i>
-        Crear planos
+        Crear planimetría
     </a>
-    <h1>Planos</h1>
+    <h1>Planimetría</h1>
 @stop
 
 @section('content')
@@ -22,6 +22,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Título</th>
+                        <th>Tipo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,9 +31,10 @@
                         <tr>
                             <td>{{ $plan->id }}</td>
                             <td>{{ $plan->title }}</td>
+                            <td>{{ $plan->service->name }}</td>
                             <td width="130">
                                 <div class="d-flex">
-                                    <a href="{{ route('plans.show', $plan) }}" class="mx-1 btn btn-xs btn-success">
+                                    <a href="{{ route('plans.show', $plan) }}" class="mx-1 btn btn-xs btn-warning">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     <a href="{{ route('plans.edit', $plan) }}" class="mx-1 btn btn-xs btn-primary">

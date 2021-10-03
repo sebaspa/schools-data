@@ -267,7 +267,7 @@ return [
             'can'  => 'schools.index',
         ],
         [
-            'text'  => 'Construcciones',
+            'text'  => 'Descripciones',
             'route' => 'buildings.index',
             'icon' => 'fas fa-fw fa-building',
             'can'  => 'buildings.index',

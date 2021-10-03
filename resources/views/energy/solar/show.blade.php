@@ -15,7 +15,7 @@
             <p class="mb-0">{{ session('info') }}</p>
         </div>
     @endif
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Energía solar</h3>
         </div>

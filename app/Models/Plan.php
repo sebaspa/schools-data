@@ -10,4 +10,9 @@ class Plan extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'document', 'school_id', 'service_id'];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

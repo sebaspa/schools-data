@@ -2,7 +2,7 @@
 @section('title', 'Energía eléctrica')
 
 @section('content_header')
-    <a href="{{ route('electrics.edit', $electric) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('electrics.edit', $electric) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-edit mr-1"></i>
         Editar energía eléctrica
     </a>
@@ -15,7 +15,7 @@
             <p class="mb-0">{{ session('info') }}</p>
         </div>
     @endif
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Energía eléctrica</h3>
         </div>

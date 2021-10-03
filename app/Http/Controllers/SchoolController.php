@@ -195,7 +195,7 @@ class SchoolController extends Controller
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     return '
-                <a href="/schools/' . $data->id . '" class="btn btn-xs btn-success"><i class="fas fa-eye"></i></a>
+                <a href="/schools/' . $data->id . '" class="btn btn-xs btn-warning"><i class="fas fa-eye"></i></a>
                 <a href="/schools/' . $data->id . '/edit" class="btn btn-xs btn-primary"><i class="fas fa-edit"></i></a>
                 <a href="#" data-id="' . $data->id . '" class="btn btn-xs btn-danger btn-delete"><i class="fas fa-trash"></i></a>
                 ';

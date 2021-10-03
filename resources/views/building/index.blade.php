@@ -2,16 +2,16 @@
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
-@section('title', 'Construcciones')
+@section('title', 'Descripciones')
 
 @section('plugins.Sweetalert2', true)
 
 @section('content_header')
     <a href="{{ route('buildings.create') }}" class="btn btn-sm btn-warning float-right"><i
             class="fas fa-user-cog mr-1"></i>
-        Crear construcción
+        Crear descripción
     </a>
-    <h1>Construcciones</h1>
+    <h1>Descripciones</h1>
 @stop
 
 @section('content')
