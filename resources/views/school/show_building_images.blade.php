@@ -5,13 +5,13 @@
 @section('content_header')
     <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-eye mr-1"></i>
-        Ver escuela
+        Filiación
     </a>
     <h1>Galería de fotos</h1>
 @stop
 
 @section('content')
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">{{ $building->name }} - {{ $school->name }}</h3>
         </div>
@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="{{ route('images.addimages_school_building', [$school->id, $building->id]) }}"
-                        class="btn btn-primary"><i class="fa fa-images"></i> Agregar más fotos</a>
+                        class="btn btn-warning"><i class="fa fa-images"></i> Agregar más fotos</a>
                 </div>
             </div>
         </div>

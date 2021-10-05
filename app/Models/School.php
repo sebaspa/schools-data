@@ -32,7 +32,7 @@ class School extends Model
 
     public function buildings()
     {
-        return $this->belongsToMany(Building::class)->withPivot('id', 'quantity')->withTimestamps();
+        return $this->belongsToMany(Building::class)->withPivot('id', 'quantity', 'others')->withTimestamps();
     }
 
     public function plans()

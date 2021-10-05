@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -21,7 +22,7 @@ class RoleSeeder extends Seeder
 
         //Administrador
 
-        if (Role::findByName('Administrador')) {
+        if (DB::table('roles')->where('name', 'Administrador')->count() > 0) {
             $roleAdmin = Role::findByName('Administrador');
         } else {
             $roleAdmin = Role::create(['name' => 'Administrador']);

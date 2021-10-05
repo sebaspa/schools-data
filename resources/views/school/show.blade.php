@@ -68,7 +68,7 @@
                 <div class="row">
                     @foreach ($school->buildings as $building)
                         <div class="col-12 col-md-6 col-lg-3">
-                            <div class="small-box bg-success">
+                            <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3>{{ $building->pivot->quantity }}</h3>
 
@@ -93,38 +93,45 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-12 col-md-2">
-                    <a href="{{ route('plans.index', $school) }}" class="btn btn-warning">
-                        <i class="fa fa-drafting-compass mr-2"></i> Ver Planos
-                    </a>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <p>Planos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <a href="{{ route('plans.index', $school) }}"
+                            class="small-box-footer">Ver planos <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Tipos de energía</h3>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-2">
-                    <a href="{{ route('electrics.index', $school) }}" class="btn btn-block btn-primary">
+                    <a href="{{ route('electrics.index', $school) }}" class="btn btn-block btn-warning">
                         <i class="fa fa-bolt mr-2"></i> Eléctrica
                     </a>
                 </div>
                 <div class="col-12 col-md-2">
-                    <a href="{{ route('solars.index', $school) }}" class="btn btn-block btn-primary">
+                    <a href="{{ route('solars.index', $school) }}" class="btn btn-block btn-warning">
                         <i class="fa fa-sun mr-2"></i> Solar
                     </a>
                 </div>
                 <div class="col-12 col-md-2">
-                    <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-block btn-primary">
+                    <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-block btn-warning">
                         <i class="fa fa-fan mr-2"></i> Climatización
                     </a>
                 </div>
                 <div class="col-12 col-md-2">
-                    <a href="{{ route('heatings.index', $school) }}" class="btn btn-block btn-primary">
+                    <a href="{{ route('heatings.index', $school) }}" class="btn btn-block btn-warning">
                         <i class="fa fa-fire mr-2"></i> Calefacción
                     </a>
                 </div>

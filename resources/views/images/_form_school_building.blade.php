@@ -32,6 +32,6 @@
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-primary">Guardar foto</button>
+        <button type="submit" class="btn btn-warning">Guardar foto</button>
     </div>
 </div>

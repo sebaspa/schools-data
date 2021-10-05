@@ -28,8 +28,19 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()
         ])->syncRoles('Administrador');
 
+        User::create([
+            'name' => 'Oscar',
+            'last_name' => 'Palacios',
+            'email' => 'opecoria@hotmail.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => 'FF%oYm1kVTn*',
+            'remember_token' => Str::random(10),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ])->syncRoles('Administrador');
+
         if (app()->environment() == 'local') {
-            User::factory(199)->create();
+            User::factory(198)->create();
         }
     }
 }

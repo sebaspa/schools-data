@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Imágenes')
+@section('title', 'Fotos')
 
 @section('content_header')
-    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-eye mr-1"></i>
-        Ver escuela
+        Filiación
     </a>
-    <h1>Agregar imágen</h1>
+    <h1>Agregar Foto</h1>
 @stop
 
 @section('content')
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">{{ $building->name }}</h3>
         </div>
@@ -25,7 +25,7 @@
     <div class="card">
         <div class="card-body">
             <a href="{{ route('schools.show_building_images', [$school, $building->id]) }}"
-                class="btn btn-success"><i class="fa fa-images"></i> Ver fotos de {{ $building->name }}</a>
+                class="btn btn-warning"><i class="fa fa-images"></i> Ver fotos de {{ $building->name }}</a>
         </div>
     </div>
 @stop

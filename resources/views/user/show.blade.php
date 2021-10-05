@@ -28,7 +28,7 @@
                                 <strong class="d-block"><i class="fas fa-user-tag mr-1"></i> Roles</strong>
 
                                 @forelse ($user->roles->pluck('name') as $role)
-                                    <span class="badge bg-primary">
+                                    <span class="badge bg-warning">
                                         {{ $role }}
                                     </span>
                                 @empty

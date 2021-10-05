@@ -11,7 +11,7 @@
         <i class="fas fa-school mr-1"></i>
         Filiación
     </a>
-    <h1>Construcciones</h1>
+    <h1>Descripciones</h1>
 @stop
 
 @section('content')
@@ -22,8 +22,9 @@
     @endif
     <form action="{{ route('schools.updatebuildings', $school) }}" method="POST">
         @method('patch')
+        <input type="hidden" name="school_id" value="{{ $school->id }}">
         <div class="container-fluid">
-            @include('school._form_building_school', ['btnText' => 'Editar'])
+            @include('school._form_building_school', ['btnText' => 'Asignar'])
         </div>
     </form>
 @endsection

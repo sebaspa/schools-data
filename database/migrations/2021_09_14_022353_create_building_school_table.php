@@ -18,6 +18,7 @@ class CreateBuildingSchoolTable extends Migration
             $table->foreignId('building_id')->constrained();
             $table->foreignId('school_id')->constrained();
             $table->integer('quantity')->unsigned();
+            $table->text('others')->nullable();
             $table->timestamps();
         });
     }
