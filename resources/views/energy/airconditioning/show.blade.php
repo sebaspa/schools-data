@@ -24,19 +24,19 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Potencia</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Potencia</strong>
                     <p class="text-muted">{{ $airconditioning->potency }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Frigoria</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Frigoria</strong>
                     <p class="text-muted">{{ $airconditioning->frigoria }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Marca</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Marca</strong>
                     <p class="text-muted">{{ $airconditioning->mark }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Modelo</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Modelo</strong>
                     <p class="text-muted">{{ $airconditioning->model }}</p>
                 </div>
                 <div class="col-12">
@@ -57,19 +57,19 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Número de grupos</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Número de grupos</strong>
                     <p class="text-muted">{{ $airconditioning->number_groups }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Tipos</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Tipos</strong>
                     <p class="text-muted">{{ $airconditioning->types }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Marca</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Marca</strong>
                     <p class="text-muted">{{ $airconditioning->mark }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1"></i> Modelo</strong>
+                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Modelo</strong>
                     <p class="text-muted">{{ $airconditioning->model }}</p>
                 </div>
                 <div class="col-12">

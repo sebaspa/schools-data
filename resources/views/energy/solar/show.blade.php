@@ -3,7 +3,7 @@
 
 @section('content_header')
     <a href="{{ route('solars.edit', $solar) }}" class="btn btn-sm btn-warning float-right">
-        <i class="fas fa-edit mr-1"></i>
+        <i class="fas fa-edit mr-1 text-yellow"></i>
         Editar energía solar
     </a>
     <h1>Información de la energía solar</h1>
@@ -23,31 +23,31 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-chart-area mr-1"></i> Superficie total</strong>
+                    <strong><i class="fas fa-chart-area mr-1 text-yellow"></i> Superficie total</strong>
                     <p class="text-muted">{{ $solar->total_area }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-solar-panel mr-1"></i> Número de paneles</strong>
+                    <strong><i class="fas fa-solar-panel mr-1 text-yellow"></i> Número de paneles</strong>
                     <p class="text-muted">{{ $solar->number_panels }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bolt mr-1"></i> Potencia instalada</strong>
+                    <strong><i class="fas fa-bolt mr-1 text-yellow"></i> Potencia instalada</strong>
                     <p class="text-muted">{{ $solar->installed_potency }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bullseye mr-1"></i> Marca</strong>
+                    <strong><i class="fas fa-bullseye mr-1 text-yellow"></i> Marca</strong>
                     <p class="text-muted">{{ $solar->mark }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bullseye mr-1"></i> Modelo</strong>
+                    <strong><i class="fas fa-bullseye mr-1 text-yellow"></i> Modelo</strong>
                     <p class="text-muted">{{ $solar->model }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bolt mr-1"></i> Energía suministradaa la red</strong>
+                    <strong><i class="fas fa-bolt mr-1 text-yellow"></i> Energía suministradaa la red</strong>
                     <p class="text-muted">{{ $solar->energy_supplied }}</p>
                 </div>
                 <div class="col-12">
-                    <strong><i class="fas fa-comments mr-1"></i> Otros</strong>
+                    <strong><i class="fas fa-comments mr-1 text-yellow"></i> Otros</strong>
                     <p class="text-muted">{{ $solar->others ? $solar->others : 'No hay comentarios.' }}</p>
                 </div>
             </div>
