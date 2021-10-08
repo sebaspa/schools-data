@@ -2,7 +2,7 @@
 @section('title', 'Climatización')
 
 @section('content_header')
-    <a href="{{ route('airconditionings.edit', $airconditioning) }}" class="btn btn-sm btn-secondary float-right">
+    <a href="{{ route('airconditionings.edit', $airconditioning) }}" class="btn btn-sm btn-warning float-right">
         <i class="fas fa-edit mr-1"></i>
         Editar climatización
     </a>
@@ -16,7 +16,7 @@
         </div>
     @endif
     @if ($airconditioning->subtypeenergy_id == 1)
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Climatización - Centralizado</h3>
         </div>
@@ -49,7 +49,7 @@
     </div>
     @endif
     @if ($airconditioning->subtypeenergy_id == 2)
-    <div class="card card-primary">
+    <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">Climatización - Parcial</h3>
         </div>

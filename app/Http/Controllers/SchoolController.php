@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Solar;
 use App\Models\School;
+use App\Models\Heating;
 use App\Models\Building;
+use App\Models\Electric;
 use Illuminate\Http\Request;
+use App\Models\Airconditioning;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreSchoolRequest;
@@ -84,7 +88,13 @@ class SchoolController extends Controller
         $school->load([
             'buildings',
         ])->get();
-        return view('school.show', compact('school'));
+
+        $electrics = Electric::where('school_id', $school->id)->orderBy('created_at', 'desc')->take(2)->get();
+        $airconditionings = Airconditioning::where('school_id', $school->id)->orderBy('created_at', 'desc')->take(2)->get();
+        $heatings = Heating::where('school_id', $school->id)->orderBy('created_at', 'desc')->take(2)->get();
+        $solars = Solar::where('school_id', $school->id)->orderBy('created_at', 'desc')->take(2)->get();
+
+        return view('school.show', compact('school', 'electrics', 'airconditionings', 'heatings', 'solars'));
     }
 
     /**

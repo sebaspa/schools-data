@@ -19,6 +19,9 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        @if ($image->url)
+            <a href="{{ asset('storage/' . $image->url) }}" class="btn btn-warning" target="_blank"><i class="fa fa-eye"></i> Ver foto actual</a>
+        @endif
     </div>
     <div class="col-12">
         <div class="form-group">

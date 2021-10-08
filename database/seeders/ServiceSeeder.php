@@ -20,10 +20,6 @@ class ServiceSeeder extends Seeder
         ]);
 
         Service::create([
-            'name' => 'Generales',
-        ]);
-
-        Service::create([
             'name' => 'Gas',
         ]);
 

@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(BuildingSeeder::class);
         $this->call(SchoolSeeder::class);
+        $this->call(ServiceSeeder::class);
+        $this->call(SubtypeenergySeeder::class);
     }
 }

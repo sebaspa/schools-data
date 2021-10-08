@@ -86,7 +86,7 @@ class PlanController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('info', 'Se agregó un plano correctamente.');
+        return redirect()->route('plans.index', $request->school_id)->with('info', 'Se agregó un plano correctamente.');
     }
 
     /**
@@ -147,7 +147,7 @@ class PlanController extends Controller
             $plan->update(array_filter($request->all()));
         }
 
-        return redirect()->back()->with('info', 'Se editó un plano correctamente.');
+        return redirect()->route('plans.index', $plan->school_id)->with('info', 'Se editó un plano correctamente.');
     }
 
     /**
@@ -161,7 +161,7 @@ class PlanController extends Controller
         //
         Storage::delete("/public/$plan->document");
         $plan->delete();
-        return redirect()->back()->with('info', 'Se eliminó un plano correctamente.');
+        return redirect()->route('plans.index', $plan->school_id)->with('info', 'Se eliminó un plano correctamente.');
     }
 
     protected function optimizePlanImage($file, $school)

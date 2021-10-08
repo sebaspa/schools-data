@@ -55,7 +55,7 @@ class AirconditioningController extends Controller
     {
         //
         if ($request->subtypeenergy_id == "1") {
-
+            
             $request->validate([
                 'school_id' => 'required|exists:schools,id',
                 'subtypeenergy_id' => 'required|exists:subtypeenergy,id',

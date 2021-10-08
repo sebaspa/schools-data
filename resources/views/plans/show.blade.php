@@ -22,15 +22,19 @@
         <!-- /.card-header -->
         <div class="card-body">
             <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <strong><i class="fas fa-school mr-1"></i> Nombre</strong>
                     <p class="text-muted">{{ $plan->title }}</p>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <strong><i class="fas fa-school mr-1"></i> Descripción</strong>
                     <p class="text-muted">{{ $plan->description ? $plan->description : 'No hay descripción.' }}</p>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
+                    <strong><i class="fas fa-school mr-1"></i> Tipo</strong>
+                    <p class="text-muted">{{ $plan->service->name }}</p>
+                </div>
+                <div class="col-12">
                     <strong><i class="fas fa-school mr-1"></i> Planimetría</strong>
                     <div class="mt-3">
                         <a href="/storage/{{ $plan->document }}" class="btn btn-warning" target="_blank">
