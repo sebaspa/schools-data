@@ -27,43 +27,49 @@
             </form>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">
-            <h4>Construcciones</h4>
+    @can('description.assign')
+        <div class="card">
+            <div class="card-header">
+                <h4>Descripciones</h4>
+            </div>
+            <div class="card-body">
+                <a href="{{ route('buildings.index_by_school', $school) }}" class="btn btn-warning">
+                    <i class="fa fa-building mr-2"></i> Editar
+                </a>
+            </div>
         </div>
-        <div class="card-body">
-            <a href="{{ route('buildings.index_by_school', $school) }}" class="btn btn-warning">
-                <i class="fa fa-building mr-2"></i> Editar
-            </a>
+    @endcan
+    @can('plan.assign')
+        <div class="card">
+            <div class="card-header">
+                <h3>Planimetría</h3>
+            </div>
+            <div class="card-body">
+                <a href="{{ route('plans.index', $school) }}" class="btn btn-warning">
+                    <i class="fa fa-drafting-compass mr-2"></i> Editar
+                </a>
+            </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <h3>Planimetría</h3>
+    @endcan
+    @can('energy.assign')
+        <div class="card">
+            <div class="card-header">
+                <h4>Tipos de Energía</h4>
+            </div>
+            <div class="card-body">
+                <a href="{{ route('electrics.index', $school) }}" class="btn btn-warning">
+                    <i class="fa fa-bolt mr-2"></i> Eléctrica
+                </a>
+                <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-warning">
+                    <i class="fa fa-fan mr-2"></i> Climatización
+                </a>
+                <a href="{{ route('heatings.index', $school) }}" class="btn btn-warning">
+                    <i class="fa fa-fire mr-2"></i> Calefacción
+                </a>
+                <a href="{{ route('solars.index', $school) }}" class="btn btn-warning">
+                    <i class="fa fa-sun mr-2"></i> Energía Solar
+                </a>
+            </div>
         </div>
-        <div class="card-body">
-            <a href="{{ route('plans.index', $school) }}" class="btn btn-warning">
-                <i class="fa fa-drafting-compass mr-2"></i> Editar
-            </a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <h4>Tipos de Energía</h4>
-        </div>
-        <div class="card-body">
-            <a href="{{ route('electrics.index', $school) }}" class="btn btn-warning">
-                <i class="fa fa-bolt mr-2"></i> Eléctrica
-            </a>
-            <a href="{{ route('airconditionings.index', $school) }}" class="btn btn-warning">
-                <i class="fa fa-fan mr-2"></i> Climatización
-            </a>
-            <a href="{{ route('heatings.index', $school) }}" class="btn btn-warning">
-                <i class="fa fa-fire mr-2"></i> Calefacción
-            </a>
-            <a href="{{ route('solars.index', $school) }}" class="btn btn-warning">
-                <i class="fa fa-sun mr-2"></i> Energía Solar
-            </a>
-        </div>
-    </div>
+    @endcan
 @stop

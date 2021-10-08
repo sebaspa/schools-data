@@ -18,10 +18,12 @@ class BuildingController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
+        $this->middleware(['can:buildings.create'])->only('create', 'store');
         $this->middleware(['can:buildings.index'])->only('index', 'get');
         $this->middleware(['can:buildings.edit'])->only('edit', 'update');
         $this->middleware(['can:buildings.destroy'])->only('destroy');
         $this->middleware(['can:buildings.show'])->only('show');
+        $this->middleware(['can:description.assign'])->only('index_by_school');
     }
 
     public function index_by_school(School $school)

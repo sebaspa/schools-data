@@ -1,9 +1,9 @@
 @extends('adminlte::page')
-@section('title', 'Crear plano')
+@section('title', 'Asignar plano')
 
 
 @section('content_header')
-    <h1>Crear plano</h1>
+    <h1>Asignar plano</h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
             <form action="{{ route('plans.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="container-fluid">
                     <input type="hidden" name="school_id" value="{{ $school->id }}">
-                    @include('plans._form', ['btnText' => 'Crear'])
+                    @include('plans._form', ['btnText' => 'Asignar'])
                 </div>
             </form>
         </div>

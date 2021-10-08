@@ -18,7 +18,7 @@ class AirconditioningController extends Controller
         $this->middleware(['auth']);
 
         $this->middleware(['can:schools.index', 'can:schools.show'])->only('index', 'show');
-        $this->middleware(['can:schools.edit'])->only('create', 'store', 'edit', 'update', 'destroy');
+        $this->middleware(['can:energy.assign'])->only('create', 'store', 'edit', 'update', 'destroy');
     }
 
     /**

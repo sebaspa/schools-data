@@ -25,10 +25,12 @@ class SchoolController extends Controller
     public function __construct()
     {
         $this->middleware(['auth']);
+        $this->middleware(['can:schools.create'])->only('create', 'store');
         $this->middleware(['can:schools.index'])->only('index', 'get');
-        $this->middleware(['can:schools.edit'])->only('edit', 'update', 'deletebuilding');
-        $this->middleware(['can:schools.destroy'])->only('destroy', 'deletebuilding');
+        $this->middleware(['can:schools.edit'])->only('edit', 'update');
+        $this->middleware(['can:schools.destroy'])->only('destroy');
         $this->middleware(['can:schools.show'])->only('show', 'show_building_images');
+        $this->middleware(['can:description.assign'])->only('show', 'updatebuildings', 'deletebuilding');
     }
 
     /**
@@ -141,44 +143,6 @@ class SchoolController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\School  $school
-     * @return \Illuminate\Http\Response
-     */
-    public function updatebuildings(Request $request, School $school)
-    {
-        //     
-        $request->validate([
-            'quantity.*' => ['required', 'numeric', 'min:0', 'max:99'],
-            'building_id.*' => ['required', 'exists:buildings,id'],
-            'others.*' => ['nullable', 'min:3']
-        ], [
-            'quantity.*.required' => 'La cantidad es requrida',
-            'quantity.*.numeric' => 'La cantidad debe ser un valor numérico',
-            'quantity.*.min' => 'La cantidad debe ser mayor a :min',
-            'quantity.*.max' => 'La cantidad debe ser menor a :max',
-            'building_id.*.required' => 'La construcción es requrida',
-            'building_id.*.exists' => 'La construcción seleccionada no existe',
-        ]);
-
-        
-        if ($request->building_id) {
-            foreach ($request->building_id as $key => $value) {
-                $pivot_building_school[$value] = [
-                    'quantity' => $request->quantity[$key],
-                    'others' => $request->others[$key],
-                ];
-            }
-            $school->buildings()->sync($pivot_building_school);
-        }
-
-
-        return redirect()->route('schools.show', $school)->with('info', 'Se modificaron las descripciones correctamente');
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\School  $school
@@ -229,5 +193,43 @@ class SchoolController extends Controller
 
             return response()->json($request->id, 200);
         }
+    }
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\School  $school
+     * @return \Illuminate\Http\Response
+     */
+    public function updatebuildings(Request $request, School $school)
+    {
+        //     
+        $request->validate([
+            'quantity.*' => ['required', 'numeric', 'min:0', 'max:99'],
+            'building_id.*' => ['required', 'exists:buildings,id'],
+            'others.*' => ['nullable', 'min:3']
+        ], [
+            'quantity.*.required' => 'La cantidad es requrida',
+            'quantity.*.numeric' => 'La cantidad debe ser un valor numérico',
+            'quantity.*.min' => 'La cantidad debe ser mayor a :min',
+            'quantity.*.max' => 'La cantidad debe ser menor a :max',
+            'building_id.*.required' => 'La construcción es requrida',
+            'building_id.*.exists' => 'La construcción seleccionada no existe',
+        ]);
+
+
+        if ($request->building_id) {
+            foreach ($request->building_id as $key => $value) {
+                $pivot_building_school[$value] = [
+                    'quantity' => $request->quantity[$key],
+                    'others' => $request->others[$key],
+                ];
+            }
+            $school->buildings()->sync($pivot_building_school);
+        }
+
+
+        return redirect()->route('schools.show', $school)->with('info', 'Se modificaron las descripciones correctamente');
     }
 }
