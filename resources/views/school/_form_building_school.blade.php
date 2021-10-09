@@ -12,7 +12,7 @@
                         <label for="quantity">Cantidad</label>
                         <input type="number" name="quantity[]"
                             class="form-control @error('quantity.' . $key) is-invalid @enderror" placeholder="Cantidad"
-                            value="{{ old('quantity.' . $key, $school->buildings[$key]["pivot"]["quantity"]) }}" min="0" max="99" required>
+                            value="{{ old('quantity.' . $key, ($school->buildings->count() > 0) ? $school->buildings[$key]["pivot"]["quantity"] : 0) }}" min="0" max="99" required>
                         @error('quantity.' . $key)
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -20,13 +20,13 @@
                     <div class="form-group">
                         <label for="others">Otros</label>
                         <textarea name="others[]" rows="5"
-                            class="form-control @error('others.' . $key) is-invalid @enderror">{{ old('others.' . $key, $school->buildings[$key]["pivot"]["others"]) }}</textarea>
+                            class="form-control @error('others.' . $key) is-invalid @enderror">{{ old('others.' . $key, ($school->buildings->count() > 0) ? $school->buildings[$key]["pivot"]["others"] : '') }}</textarea>
                         @error('others.' . $key)
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
-                @if ($school->buildings[$key]["pivot"]["quantity"] > 0)
+                @if ($school->buildings->count() > 0)
                 <div class="card-footer">
                     <a href="{{ route('schools.show_building_images', [$school, $item->id]) }}" class="btn btn-warning">
                         <i class="fa fa-images mr-2"></i>

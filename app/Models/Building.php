@@ -16,7 +16,7 @@ class Building extends Model
 
     public function schools()
     {
-        return $this->belongsToMany(School::class)->withTimestamps();
+        return $this->belongsToMany(School::class)->withPivot('id', 'quantity', 'others')->withTimestamps();
     }
 
     public function images()
