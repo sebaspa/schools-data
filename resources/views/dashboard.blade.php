@@ -7,6 +7,16 @@
     <h1>Dashboard</h1>
 @stop
 
+@section('css')
+    <style>
+        #myChart {
+            width: 100% !important;
+            height: 300px !important;
+        }
+
+    </style>
+@endsection
+
 @section('content')
     <div class="row mb-4">
         <div class="col-12 col-md-4 col-lg-3">
@@ -43,7 +53,7 @@
             <h3>Gráfica (Filiaciones - Descripciones)</h3>
         </div>
         <div class="col-12">
-            <canvas id="myChart" width="100%" height="20"></canvas>
+            <canvas id="myChart"></canvas>
         </div>
     </div>
     <div class="row">
@@ -59,6 +69,8 @@
         };
         var optionsChart = {
             responsive: true,
+            maintainAspectRatio: false,
+            bezierCurve: false,
             scales: {
                 yAxes: [{
                     ticks: {
