@@ -23,39 +23,42 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Servicio</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($services as $item)
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td width="130">
-                                <div class="d-flex">
-                                    <a href="{{ route('services.edit', $item) }}" class="mx-1 btn btn-xs btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-id="{{ $item->id }}" class="mx-1 btn btn-xs btn-danger btn-delete">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th>ID</th>
+                            <th>Servicio</th>
+                            <th>Acciones</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="3">
-                                <p>No se encontraron resultados.</p>
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @forelse ($services as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td width="130">
+                                    <div class="d-flex">
+                                        <a href="{{ route('services.edit', $item) }}" class="mx-1 btn btn-xs btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="#" data-id="{{ $item->id }}"
+                                            class="mx-1 btn btn-xs btn-danger btn-delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3">
+                                    <p>No se encontraron resultados.</p>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="mx-3">
             {{ $services->onEachSide(5)->links() }}

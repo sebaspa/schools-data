@@ -22,39 +22,42 @@
     @endif
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Role</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($roles as $role)
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>{{ $role->id }}</td>
-                            <td>{{ $role->name }}</td>
-                            <td width="130">
-                                <div class="d-flex">
-                                    <a href="{{ route('roles.edit', $role) }}" class="mx-1 btn btn-xs btn-primary">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="#" data-id="{{ $role->id }}" class="mx-1 btn btn-xs btn-danger btn-delete-role">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th>ID</th>
+                            <th>Role</th>
+                            <th>Acciones</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="3">
-                                <p>No se encontraron resultados.</p>
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @forelse ($roles as $role)
+                            <tr>
+                                <td>{{ $role->id }}</td>
+                                <td>{{ $role->name }}</td>
+                                <td width="130">
+                                    <div class="d-flex">
+                                        <a href="{{ route('roles.edit', $role) }}" class="mx-1 btn btn-xs btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="#" data-id="{{ $role->id }}"
+                                            class="mx-1 btn btn-xs btn-danger btn-delete-role">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="3">
+                                    <p>No se encontraron resultados.</p>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="mx-3">
             {{ $roles->onEachSide(5)->links() }}
