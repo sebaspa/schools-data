@@ -16,6 +16,7 @@ class CreateElectricsTable extends Migration
         Schema::create('electrics', function (Blueprint $table) {
             $table->id();
             $table->integer('school_id');
+            $table->string('supplying_company')->nullable();
             $table->string('contract_type');
             $table->string('supply_number');
             $table->string('number_light_meter');

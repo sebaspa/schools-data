@@ -1,5 +1,16 @@
 @csrf
 <div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <label for="supplying_company">Empresa suministradora</label>
+            <input type="text" class="form-control @error('supplying_company') is-invalid @enderror" min="3"
+                id="supplying_company" name="supplying_company" value="{{ old('supplying_company', $electric->supplying_company) }}"
+                required>
+            @error('supplying_company')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
     <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="contract_type">Tipo de contrato</label>

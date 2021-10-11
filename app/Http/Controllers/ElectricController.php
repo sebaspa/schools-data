@@ -56,19 +56,21 @@ class ElectricController extends Controller
         //
         $request->validate([
             'school_id' => 'required|exists:schools,id',
+            'supplying_company' => 'nullable|min:3',
             'contract_type' => 'required|min:3',
-            'supply_number' => 'required|min:3',
-            'number_light_meter' => 'required|min:3',
-            'hired_potency' => 'required|min:3',
-            'total_potency' => 'required|min:3',
-            'general_rush' => 'required|min:3',
-            'number_circuits' => 'required|min:3',
-            'partial_squares' => 'required|min:3',
+            'supply_number' => 'required',
+            'number_light_meter' => 'required',
+            'hired_potency' => 'required',
+            'total_potency' => 'required',
+            'general_rush' => 'required',
+            'number_circuits' => 'required',
+            'partial_squares' => 'required',
             'others' => 'nullable|min:3'
         ]);
 
         Electric::create([
             'school_id' => $request->school_id,
+            'supplying_company' => $request->supplying_company,
             'contract_type' => $request->contract_type,
             'supply_number' => $request->supply_number,
             'number_light_meter' => $request->number_light_meter,
@@ -118,14 +120,15 @@ class ElectricController extends Controller
     {
         //
         $request->validate([
+            'supplying_company' => 'nullable|min:3',
             'contract_type' => 'required|min:3',
-            'supply_number' => 'required|min:3',
-            'number_light_meter' => 'required|min:3',
-            'hired_potency' => 'required|min:3',
-            'total_potency' => 'required|min:3',
-            'general_rush' => 'required|min:3',
-            'number_circuits' => 'required|min:3',
-            'partial_squares' => 'required|min:3',
+            'supply_number' => 'required',
+            'number_light_meter' => 'required',
+            'hired_potency' => 'required',
+            'total_potency' => 'required',
+            'general_rush' => 'required',
+            'number_circuits' => 'required',
+            'partial_squares' => 'required',
             'others' => 'nullable|min:3'
         ]);
 

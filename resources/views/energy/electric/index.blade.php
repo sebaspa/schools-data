@@ -27,6 +27,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Típo de contrato</th>
+                            <th>Empresa suministradora</th>
                             <th>Número de suministro</th>
                             <th>Acciones</th>
                         </tr>
@@ -36,6 +37,7 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->contract_type }}</td>
+                                <td>{{ $item->supplying_company }}</td>
                                 <td>{{ $item->supply_number }}</td>
                                 <td width="130">
                                     <div class="d-flex">

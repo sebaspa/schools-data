@@ -11,6 +11,7 @@ class Electric extends Model
 
     protected $fillable = [
         'school_id',
+        'supplying_company',
         'contract_type',
         'supply_number',
         'number_light_meter',
