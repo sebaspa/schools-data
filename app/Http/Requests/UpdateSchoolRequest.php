@@ -26,13 +26,13 @@ class UpdateSchoolRequest extends FormRequest
         return [
             //
             'name' => 'required|min:3|max:200|unique:schools,name,' . request()->route('school')->id,
-            'address' => 'required|min:3|max:200|unique:schools,address,' . request()->route('school')->id,
-            'district' => 'required|min:3|max:200',
-            'phone' => 'required|min:3|max:50',
-            'fax' => 'required|min:3|max:50',
-            'email' => 'required|email|max:100|unique:schools,email,' . request()->route('school')->id,
-            'liable' => 'required|min:3|max:100',
-            'others' => 'min:3',
+            'address' => 'nullable|min:3|max:200',
+            'district' => 'nullable|min:3|max:200',
+            'phone' => 'nullable|min:3',
+            'fax' => 'nullable|min:3|max:50',
+            'email' => 'nullable|email|min:10',
+            'liable' => 'nullable|min:3|max:100',
+            'others' => 'nullable|min:3',
         ];
     }
 }

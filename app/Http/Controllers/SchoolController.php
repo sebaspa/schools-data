@@ -66,14 +66,6 @@ class SchoolController extends Controller
     {
         //
         $school = School::create($request->validated());
-        if ($request->building_assigned) {
-            foreach ($request->building_assigned as $key => $value) {
-                $pivot_building_school[$value] = [
-                    'quantity' => $request->quantity_assigned[$key]
-                ];
-            }
-            $school->buildings()->sync($pivot_building_school);
-        }
         //dd($request->all());
         return redirect()->route('schools.index')->with('info', 'Escuela guardada correctamente');
     }
@@ -167,7 +159,7 @@ class SchoolController extends Controller
     public function get(Request $request)
     {
         if ($request->ajax()) {
-            $data = School::select('id', 'name', 'address', 'email', 'phone')->get();
+            $data = School::select('id', 'name', 'address', 'email', 'phone')->orderBy('created_at', 'desc')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     return '

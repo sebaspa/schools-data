@@ -16,12 +16,12 @@ class CreateSchoolsTable extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string("name", 200)->unique();
-            $table->string("address", 200)->unique();
-            $table->string("district", 200);
-            $table->string("phone", 50);
-            $table->string("fax", 50);
-            $table->string("email", 100)->unique();
-            $table->string("liable", 100);
+            $table->string("address", 200)->nullable();
+            $table->string("district", 200)->nullable();
+            $table->text("phone")->nullable();
+            $table->string("fax", 50)->nullable();
+            $table->text("email", 100)->nullable();
+            $table->string("liable", 200)->nullable();
             $table->text("others")->nullable();
             $table->timestamps();
         });
