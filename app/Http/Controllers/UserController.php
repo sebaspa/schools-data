@@ -196,7 +196,6 @@ class UserController extends Controller
                 <a href="#" data-id="' . $user->id . '" class="btn btn-xs btn-danger btn-user-delete"><i class="fas fa-trash"></i></a>
                 ';
                 })
-                ->removeColumn('id')
                 ->make(true);
         }
     }

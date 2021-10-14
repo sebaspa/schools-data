@@ -22,6 +22,7 @@
                 <table class="table table-striped" id="table-users">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Correo</th>
@@ -52,12 +53,19 @@
                     "previous": "Anterior"
                 }
             },
+            "order": [ 0, 'desc' ],
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('users.get') }}",
-            columns: [{
+            columns: [
+                {
+                    data: 'id',
+                    name: 'id',
+                    visible: false
+                },
+                {
                     data: 'name',
                     name: 'name'
                 },
