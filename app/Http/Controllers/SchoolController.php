@@ -159,7 +159,7 @@ class SchoolController extends Controller
     public function get(Request $request)
     {
         if ($request->ajax()) {
-            $data = School::select('id', 'name', 'address', 'email', 'phone')->orderBy('created_at', 'desc')->get();
+            $data = School::select('id', 'code', 'name', 'address', 'email', 'created_at')->orderBy('created_at', 'desc')->get();
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     return '

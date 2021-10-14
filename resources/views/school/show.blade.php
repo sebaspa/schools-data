@@ -23,6 +23,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
+                    <strong><i class="fas fa-school mr-1 text-yellow"></i> Código</strong>
+                    <p class="text-muted">{{ $school->code }}</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
                     <strong><i class="fas fa-school mr-1 text-yellow"></i> Nombre</strong>
                     <p class="text-muted">{{ $school->name }}</p>
                 </div>

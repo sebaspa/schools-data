@@ -25,6 +25,7 @@ class UpdateSchoolRequest extends FormRequest
     {
         return [
             //
+            'code' => 'required|min:3|max:200|unique:schools,code,' . request()->route('school')->id,
             'name' => 'required|min:3|max:200|unique:schools,name,' . request()->route('school')->id,
             'address' => 'nullable|min:3|max:200',
             'district' => 'nullable|min:3|max:200',

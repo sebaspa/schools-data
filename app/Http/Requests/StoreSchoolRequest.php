@@ -25,6 +25,7 @@ class StoreSchoolRequest extends FormRequest
     {
         return [
             //
+            'code' => 'required|min:3|max:200|unique:schools,code',
             'name' => 'required|min:3|max:200|unique:schools,name',
             'address' => 'nullable|min:3|max:200',
             'district' => 'nullable|min:3|max:200',

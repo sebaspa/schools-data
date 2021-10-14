@@ -13,6 +13,7 @@ class SchoolFactory extends Factory
      * @var string
      */
     protected $model = School::class;
+    private static $order = 1;
 
     /**
      * Define the model's default state.
@@ -23,6 +24,7 @@ class SchoolFactory extends Factory
     {
         return [
             //
+            'code' => 'CO-' . self::$order++,
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
             'district' => $this->faker->city(),

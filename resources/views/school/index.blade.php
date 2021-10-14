@@ -22,10 +22,11 @@
                 <table class="table table-striped" id="table">
                     <thead>
                         <tr>
+                            <th>Código</th>
                             <th>Nombre</th>
                             <th>Dirección</th>
                             <th>Correo</th>
-                            <th>Teléfono</th>
+                            <th>Fecha de creación</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -52,12 +53,18 @@
                     "previous": "Anterior"
                 }
             },
+            "order": [ 4, 'desc' ],
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('schools.get') }}",
-            columns: [{
+            columns: [
+                {
+                    data: 'code',
+                    name: 'code'
+                },
+                {
                     data: 'name',
                     name: 'name'
                 },
@@ -70,8 +77,9 @@
                     name: 'email'
                 },
                 {
-                    data: 'phone',
-                    name: 'phone'
+                    data: 'created_at',
+                    name: 'created_at',
+                    visible: false
                 },
                 {
                     data: 'action',

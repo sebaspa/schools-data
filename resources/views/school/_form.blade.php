@@ -1,5 +1,16 @@
 @csrf
 <div class="row">
+    
+    <div class="col-12 col-md-6">
+        <div class="form-group">
+            <label for="code">Código</label>
+            <input type="text" name="code" id="code" class="form-control @error('code') is-invalid @enderror"
+                placeholder="Código" value="{{ old('code', $school->code) }}" required>
+            @error('code')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
     <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="name">Nombre</label>
@@ -61,7 +72,7 @@
             @enderror
         </div>
     </div>
-    <div class="col-12">
+    <div class="col-12 col-md-6">
         <div class="form-group">
             <label for="liable">Responsable</label>
             <input type="text" name="liable" id="liable" class="form-control @error('liable') is-invalid @enderror"
