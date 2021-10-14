@@ -2,7 +2,7 @@
 @section('title', 'Calefacción')
 
 @section('content_header')
-    <a href="{{ route('heatings.edit', $heating) }}" class="btn btn-sm btn-warning float-right">
+    <a href="{{ route('heatings.edit', $heating) }}" class="btn btn-sm btn-danger float-right">
         <i class="fas  text-yellowfa-edit mr-1"></i>
         Editar Calefacción
     </a>
@@ -16,7 +16,7 @@
         </div>
     @endif
     @if ($heating->subtypeenergy_id == 3)
-    <div class="card card-warning">
+    <div class="card card-info">
         <div class="card-header">
             <h3 class="card-title">Calefacción - Eléctrico</h3>
         </div>

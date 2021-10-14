@@ -8,7 +8,7 @@
 
 
 @section('content_header')
-    <a href="{{ route('services.create') }}" class="btn btn-sm btn-warning float-right">
+    <a href="{{ route('services.create') }}" class="btn btn-sm btn-danger float-right">
         <i class="fas fa-user-cog mr-1"></i>
         Crear servicio
     </a>

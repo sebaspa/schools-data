@@ -2,11 +2,11 @@
 @section('title', 'Planimetría')
 
 @section('content_header')
-    <a href="{{ route('plans.create', $school) }}" class="btn btn-sm btn-warning float-right">
+    <a href="{{ route('plans.create', $school) }}" class="btn btn-sm btn-danger float-right">
         <i class="fas fa-user-cog mr-1"></i>
         Crear planimetría
     </a>
-    <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-warning float-right mr-2">
+    <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-danger float-right mr-2">
         <i class="fas fa-school mr-1"></i>
         Filiación
     </a>

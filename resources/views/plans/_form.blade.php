@@ -21,7 +21,7 @@
             @enderror
         </div>
         @if ($plan->document)
-            <a href="/storage/{{ $plan->document }}" class="btn btn-warning mb-4" target="_blank">
+            <a href="/storage/{{ $plan->document }}" class="btn btn-info mb-4" target="_blank">
                 <i class="fa fa-eye mr-2"></i>Ver planimetría
             </a>
         @endif
@@ -49,6 +49,6 @@
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-warning">{{ $btnText }}</button>
+        <button type="submit" class="btn btn-info">{{ $btnText }}</button>
     </div>
 </div>

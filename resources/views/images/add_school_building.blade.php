@@ -3,7 +3,7 @@
 @section('title', 'Fotos')
 
 @section('content_header')
-    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-warning float-right">
+    <a href="{{ route('schools.show', $school) }}" class="btn btn-sm btn-danger float-right">
         <i class="fas fa-eye mr-1"></i>
         Filiación
     </a>
@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    <div class="card card-warning">
+    <div class="card card-info">
         <div class="card-header">
             <h3 class="card-title">{{ $building->name }}</h3>
         </div>
@@ -25,7 +25,7 @@
     <div class="card">
         <div class="card-body">
             <a href="{{ route('schools.show_building_images', [$school, $building->id]) }}"
-                class="btn btn-warning"><i class="fa fa-images"></i> Ver fotos de {{ $building->name }}</a>
+                class="btn btn-info"><i class="fa fa-images"></i> Ver fotos de {{ $building->name }}</a>
         </div>
     </div>
 @stop

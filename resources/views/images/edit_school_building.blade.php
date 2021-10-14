@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="card card-primary">
+    <div class="card card-info">
         <div class="card-header">
             <h3 class="card-title">Editar foto</h3>
         </div>

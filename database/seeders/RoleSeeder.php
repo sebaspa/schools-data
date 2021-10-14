@@ -48,17 +48,17 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'roles.destroy', 'description' => 'Eliminar roles'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'roles.show', 'description' => 'Ver detalle de roles'])->syncRoles([$roleAdmin]);
         //Escuelas
-        Permission::create(['name' => 'schools.create', 'description' => 'Crear escuelas'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'schools.index', 'description' => 'Ver listado de escuelas'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'schools.edit', 'description' => 'Editar escuelas'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'schools.destroy', 'description' => 'Eliminar escuelas'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'schools.show', 'description' => 'Ver detalle de escuelas'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'schools.create', 'description' => 'Crear filiaciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'schools.index', 'description' => 'Ver listado de filiaciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'schools.edit', 'description' => 'Editar filiaciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'schools.destroy', 'description' => 'Eliminar filiaciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'schools.show', 'description' => 'Ver detalle de filiaciones'])->syncRoles([$roleAdmin]);
         //Construcciones
-        Permission::create(['name' => 'buildings.create', 'description' => 'Crear construcciones'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'buildings.index', 'description' => 'Ver listado de construcciones'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'buildings.edit', 'description' => 'Editar construcciones'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'buildings.destroy', 'description' => 'Eliminar construcciones'])->syncRoles([$roleAdmin]);
-        Permission::create(['name' => 'buildings.show', 'description' => 'Ver detalle de construcciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'buildings.create', 'description' => 'Crear descripciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'buildings.index', 'description' => 'Ver listado de descripciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'buildings.edit', 'description' => 'Editar descripciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'buildings.destroy', 'description' => 'Eliminar descripciones'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'buildings.show', 'description' => 'Ver detalle de descripciones'])->syncRoles([$roleAdmin]);
         //Servicios
         Permission::create(['name' => 'services.create', 'description' => 'Crear servicios'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'services.index', 'description' => 'Ver listado de servicios'])->syncRoles([$roleAdmin]);
@@ -66,11 +66,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'services.destroy', 'description' => 'Eliminar servicios'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'services.show', 'description' => 'Ver detalle de servicios'])->syncRoles([$roleAdmin]);
         //Asignar Descripciones - Construcciones
-        Permission::create(['name' => 'description.assign', 'description' => 'Asignar descripciones a las escuelas'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'description.assign', 'description' => 'Asignar descripciones a las filiaciones'])->syncRoles([$roleAdmin]);
         //Asignar Planimetria
-        Permission::create(['name' => 'plan.assign', 'description' => 'Asignar planimetría a las escuelas'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'plan.assign', 'description' => 'Asignar planimetría a las filiaciones'])->syncRoles([$roleAdmin]);
         //Asignar Tipos de energia
-        Permission::create(['name' => 'energy.assign', 'description' => 'Asignar tipos de energías a las escuelas'])->syncRoles([$roleAdmin]);
+        Permission::create(['name' => 'energy.assign', 'description' => 'Asignar tipos de energías a las filiaciones'])->syncRoles([$roleAdmin]);
 
     }
 }

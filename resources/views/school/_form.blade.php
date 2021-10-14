@@ -96,6 +96,6 @@
 
 <div class="row mt-4">
     <div class="col-12">
-        <button class="btn btn-warning" type="submit">{{ $btnText }}</button>
+        <button class="btn btn-info" type="submit">{{ $btnText }}</button>
     </div>
 </div>

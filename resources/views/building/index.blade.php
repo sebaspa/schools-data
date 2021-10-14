@@ -7,7 +7,7 @@
 @section('plugins.Sweetalert2', true)
 
 @section('content_header')
-    <a href="{{ route('buildings.create') }}" class="btn btn-sm btn-warning float-right"><i
+    <a href="{{ route('buildings.create') }}" class="btn btn-sm btn-danger float-right"><i
             class="fas fa-user-cog mr-1"></i>
         Crear descripción
     </a>

@@ -8,7 +8,7 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-warning float-right">
+    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-danger float-right">
         <i class="fas fa-user-plus mr-1"></i>
         Crear filiación
     </a>

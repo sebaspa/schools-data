@@ -56,6 +56,6 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <button class="btn btn-warning" type="submit">{{ $btnText }} usuario</button>
+        <button class="btn btn-info" type="submit">{{ $btnText }} usuario</button>
     </div>
 </div>

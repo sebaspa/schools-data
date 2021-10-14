@@ -20,7 +20,7 @@
             @enderror
         </div>
         @if ($image->url)
-            <a href="{{ asset('storage/' . $image->url) }}" class="btn btn-warning" target="_blank"><i class="fa fa-eye"></i> Ver foto actual</a>
+            <a href="{{ asset('storage/' . $image->url) }}" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i> Ver foto actual</a>
         @endif
     </div>
     <div class="col-12">
@@ -35,6 +35,6 @@
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="btn btn-warning">Guardar foto</button>
+        <button type="submit" class="btn btn-info">Guardar foto</button>
     </div>
 </div>

@@ -2,7 +2,7 @@
 @section('title', 'Energía solar')
 
 @section('content_header')
-    <a href="{{ route('solars.edit', $solar) }}" class="btn btn-sm btn-warning float-right">
+    <a href="{{ route('solars.edit', $solar) }}" class="btn btn-sm btn-danger float-right">
         <i class="fas fa-edit mr-1 text-yellow"></i>
         Editar energía solar
     </a>

@@ -11,6 +11,6 @@
         </div>
     </div>
     <div class="col-12 mt-4">
-        <button class="btn btn-warning" type="submit">{{ $btnText }} servicio</button>
+        <button class="btn btn-info" type="submit">{{ $btnText }} servicio</button>
     </div>
 </div>

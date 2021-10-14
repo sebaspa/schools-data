@@ -8,7 +8,7 @@
 
 
 @section('content_header')
-    <a href="{{ route('roles.create') }}" class="btn btn-sm btn-warning float-right"><i class="fas fa-user-cog mr-1"></i>
+    <a href="{{ route('roles.create') }}" class="btn btn-sm btn-danger float-right"><i class="fas fa-user-cog mr-1"></i>
         Crear rol
     </a>
     <h1>Roles</h1>
