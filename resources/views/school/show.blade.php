@@ -3,7 +3,7 @@
 
 @section('content_header')
     <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-danger float-right">
-        <i class="fas fa-edit mr-1"></i>
+        <i class="fas fa-edit mr-1 text-white"></i>
         Editar escuela
     </a>
     <h1>Información de la escuela</h1>
@@ -23,40 +23,40 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-school mr-1 text-red"></i> Código</strong>
-                    <p class="text-muted">{{ $school->code }}</p>
+                    <h5 class="text-bold"><i class="fas fa-school mr-1 text-red"></i> Código</h5>
+                    <p class="lead">{{ $school->code }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-school mr-1 text-red"></i> Nombre</strong>
-                    <p class="text-muted">{{ $school->name }}</p>
+                    <h5 class="text-bold"><i class="fas fa-school mr-1 text-red"></i> Nombre</h5>
+                    <p class="lead">{{ $school->name }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-map-marker-alt mr-1 text-red"></i> Dirección</strong>
-                    <p class="text-muted">{{ $school->address }}</p>
+                    <h5 class="text-bold"><i class="fas fa-map-marker-alt mr-1 text-red"></i> Dirección</h5>
+                    <p class="lead">{{ $school->address }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-map-marked-alt mr-1 text-red"></i> Distrito</strong>
-                    <p class="text-muted">{{ $school->district }}</p>
+                    <h5 class="text-bold"><i class="fas fa-map-marked-alt mr-1 text-red"></i> Distrito</h5>
+                    <p class="lead">{{ $school->district }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-phone mr-1 text-red"></i> Teléfono</strong>
-                    <p class="text-muted">{{ $school->phone }}</p>
+                    <h5 class="text-bold"><i class="fas fa-phone mr-1 text-red"></i> Teléfono</h5>
+                    <p class="lead">{{ $school->phone }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-fax mr-1 text-red"></i> Fax</strong>
-                    <p class="text-muted">{{ $school->fax }}</p>
+                    <h5 class="text-bold"><i class="fas fa-fax mr-1 text-red"></i> Fax</h5>
+                    <p class="lead">{{ $school->fax }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="far fa-envelope mr-1 text-red"></i> Email</strong>
-                    <p class="text-muted">{{ $school->email }}</p>
+                    <h5 class="text-bold"><i class="far fa-envelope mr-1 text-red"></i> Email</h5>
+                    <p class="lead">{{ $school->email }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-user-shield mr-1 text-red"></i> Responsable</strong>
-                    <p class="text-muted">{{ $school->liable }}</p>
+                    <h5 class="text-bold"><i class="fas fa-user-shield mr-1 text-red"></i> Responsable</h5>
+                    <p class="lead">{{ $school->liable }}</p>
                 </div>
                 <div class="col-12">
-                    <strong><i class="fas fa-question mr-1 text-red"></i> Otros</strong>
-                    <p class="text-muted">{{ $school->others != '' ? $school->others : 'No hay información.' }}</p>
+                    <h5 class="text-bold"><i class="fas fa-question mr-1 text-red"></i> Otros</h5>
+                    <p class="lead">{{ $school->others != '' ? $school->others : 'No hay información.' }}</p>
                 </div>
             </div>
         </div>
@@ -75,7 +75,6 @@
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                     <h3>{{ $building->pivot->quantity }}</h3>
-
                                     <p>{{ $building->name }}</p>
                                 </div>
                                 <div class="icon">
@@ -98,15 +97,16 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-danger">
                         <div class="inner">
                             <p>Planos</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-drafting-compass"></i>
                         </div>
-                        <a href="{{ route('plans.index', $school) }}" class="small-box-footer">Ver planos <i
-                                class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('plans.index', $school) }}" class="small-box-footer">
+                            Ver planos <i class="fas fa-arrow-circle-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -122,40 +122,40 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de contrato</strong>
-                        <p class="text-muted">{{ $electric->contract_type }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de contrato</h5>
+                        <p class="lead">{{ $electric->contract_type }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-charging-station mr-1 text-red"></i> Número de suministro</strong>
-                        <p class="text-muted">{{ $electric->supply_number }}</p>
+                        <h5 class="text-bold"><i class="fas fa-charging-station mr-1 text-red"></i> Número de suministro</h5>
+                        <p class="lead">{{ $electric->supply_number }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-lightbulb mr-1 text-red"></i> Número de contador</strong>
-                        <p class="text-muted">{{ $electric->number_light_meter }}</p>
+                        <h5 class="text-bold"><i class="fas fa-lightbulb mr-1 text-red"></i> Número de contador</h5>
+                        <p class="lead">{{ $electric->number_light_meter }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-bolt mr-1 text-red"></i> Potencia contratada</strong>
-                        <p class="text-muted">{{ $electric->hired_potency }}</p>
+                        <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Potencia contratada</h5>
+                        <p class="lead">{{ $electric->hired_potency }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-bolt mr-1 text-red"></i> Potencia total</strong>
-                        <p class="text-muted">{{ $electric->total_potency }}</p>
+                        <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Potencia total</h5>
+                        <p class="lead">{{ $electric->total_potency }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-plug mr-1 text-red"></i> Acometida general</strong>
-                        <p class="text-muted">{{ $electric->general_rush }}</p>
+                        <h5 class="text-bold"><i class="fas fa-plug mr-1 text-red"></i> Acometida general</h5>
+                        <p class="lead">{{ $electric->general_rush }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-battery-three-quarters mr-1 text-red"></i> Número de circuitos</strong>
-                        <p class="text-muted">{{ $electric->number_circuits }}</p>
+                        <h5 class="text-bold"><i class="fas fa-battery-three-quarters mr-1 text-red"></i> Número de circuitos</h5>
+                        <p class="lead">{{ $electric->number_circuits }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-solar-panel mr-1 text-red"></i> Número de cuadros parcial</strong>
-                        <p class="text-muted">{{ $electric->partial_squares }}</p>
+                        <h5 class="text-bold"><i class="fas fa-solar-panel mr-1 text-red"></i> Número de cuadros parcial</h5>
+                        <p class="lead">{{ $electric->partial_squares }}</p>
                     </div>
                     <div class="col-12">
-                        <strong><i class="fas fa-comments mr-1 text-red"></i> Otros</strong>
-                        <p class="text-muted">{{ $electric->others ? $electric->others : 'No hay comentarios.' }}
+                        <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                        <p class="lead">{{ $electric->others ? $electric->others : 'No hay comentarios.' }}
                         </p>
                     </div>
                 </div>
@@ -189,24 +189,24 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</strong>
-                                <p class="text-muted">{{ $airconditioning->potency }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</h5>
+                                <p class="lead">{{ $airconditioning->potency }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Frigoria</strong>
-                                <p class="text-muted">{{ $airconditioning->frigoria }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Frigoria</h5>
+                                <p class="lead">{{ $airconditioning->frigoria }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Marca</strong>
-                                <p class="text-muted">{{ $airconditioning->mark }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Marca</h5>
+                                <p class="lead">{{ $airconditioning->mark }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</strong>
-                                <p class="text-muted">{{ $airconditioning->model }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</h5>
+                                <p class="lead">{{ $airconditioning->model }}</p>
                             </div>
                             <div class="col-12">
-                                <strong><i class="fas fa-comments mr-1 text-red"></i> Otros</strong>
-                                <p class="text-muted">
+                                <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                                <p class="lead">
                                     {{ $airconditioning->others ? $airconditioning->others : 'No hay comentarios.' }}</p>
                             </div>
                         </div>
@@ -223,24 +223,24 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Número de grupos</strong>
-                                <p class="text-muted">{{ $airconditioning->number_groups }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de grupos</h5>
+                                <p class="lead">{{ $airconditioning->number_groups }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Tipos</strong>
-                                <p class="text-muted">{{ $airconditioning->types }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Tipos</h5>
+                                <p class="lead">{{ $airconditioning->types }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Marca</strong>
-                                <p class="text-muted">{{ $airconditioning->mark }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Marca</h5>
+                                <p class="lead">{{ $airconditioning->mark }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
-                                <strong><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</strong>
-                                <p class="text-muted">{{ $airconditioning->model }}</p>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</h5>
+                                <p class="lead">{{ $airconditioning->model }}</p>
                             </div>
                             <div class="col-12">
-                                <strong><i class="fas fa-comments mr-1 text-red"></i> Otros</strong>
-                                <p class="text-muted">
+                                <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                                <p class="lead">
                                     {{ $airconditioning->others ? $airconditioning->others : 'No hay comentarios.' }}</p>
                             </div>
                         </div>
@@ -277,20 +277,20 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</strong>
-                        <p class="text-muted">{{ $heating->number_radiators }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</h5>
+                        <p class="lead">{{ $heating->number_radiators }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</strong>
-                        <p class="text-muted">{{ $heating->potency }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</h5>
+                        <p class="lead">{{ $heating->potency }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</strong>
-                        <p class="text-muted">{{ $heating->model }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</h5>
+                        <p class="lead">{{ $heating->model }}</p>
                     </div>
                     <div class="col-12">
-                        <strong><i class="fas fa-comments mr-1 text-red"></i> Otros</strong>
-                        <p class="text-muted">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
+                        <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                        <p class="lead">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
                     </div>
                 </div>
             </div>
@@ -306,28 +306,28 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Gas</strong>
-                        <p class="text-muted">{{ $heating->gas }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas</h5>
+                        <p class="lead">{{ $heating->gas }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Gas Oil</strong>
-                        <p class="text-muted">{{ $heating->gasoil }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas Oil</h5>
+                        <p class="lead">{{ $heating->gasoil }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de caldera</strong>
-                        <p class="text-muted">{{ $heating->type_boiler }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de caldera</h5>
+                        <p class="lead">{{ $heating->type_boiler }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</strong>
-                        <p class="text-muted">{{ $heating->number_radiators }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</h5>
+                        <p class="lead">{{ $heating->number_radiators }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <strong><i class="fas fa-file-alt mr-1 text-red"></i> Volumen de depósito</strong>
-                        <p class="text-muted">{{ $heating->tank_volume }}</p>
+                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Volumen de depósito</h5>
+                        <p class="lead">{{ $heating->tank_volume }}</p>
                     </div>
                     <div class="col-12">
-                        <strong><i class="fas fa-comments mr-1 text-red"></i> Otros</strong>
-                        <p class="text-muted">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
+                        <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                        <p class="lead">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
                     </div>
                 </div>
             </div>
@@ -357,32 +357,32 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-chart-area mr-1 text-red"></i> Superficie total</strong>
-                    <p class="text-muted">{{ $solar->total_area }}</p>
+                    <h5 class="text-bold"><i class="fas fa-chart-area mr-1 text-red"></i> Superficie total</h5>
+                    <p class="lead">{{ $solar->total_area }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-solar-panel mr-1 text-red"></i> Número de paneles</strong>
-                    <p class="text-muted">{{ $solar->number_panels }}</p>
+                    <h5 class="text-bold"><i class="fas fa-solar-panel mr-1 text-red"></i> Número de paneles</h5>
+                    <p class="lead">{{ $solar->number_panels }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bolt mr-1 text-red"></i> Potencia instalada</strong>
-                    <p class="text-muted">{{ $solar->installed_potency }}</p>
+                    <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Potencia instalada</h5>
+                    <p class="lead">{{ $solar->installed_potency }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bullseye mr-1 text-red"></i> Marca</strong>
-                    <p class="text-muted">{{ $solar->mark }}</p>
+                    <h5 class="text-bold"><i class="fas fa-bullseye mr-1 text-red"></i> Marca</h5>
+                    <p class="lead">{{ $solar->mark }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bullseye mr-1 text-red"></i> Modelo</strong>
-                    <p class="text-muted">{{ $solar->model }}</p>
+                    <h5 class="text-bold"><i class="fas fa-bullseye mr-1 text-red"></i> Modelo</h5>
+                    <p class="lead">{{ $solar->model }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-bolt mr-1 text-red"></i> Energía suministradaa la red</strong>
-                    <p class="text-muted">{{ $solar->energy_supplied }}</p>
+                    <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Energía suministradaa la red</h5>
+                    <p class="lead">{{ $solar->energy_supplied }}</p>
                 </div>
                 <div class="col-12">
-                    <strong><i class="fas fa-comments mr-1 text-red"></i> Otros</strong>
-                    <p class="text-muted">{{ $solar->others ? $solar->others : 'No hay comentarios.' }}</p>
+                    <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                    <p class="lead">{{ $solar->others ? $solar->others : 'No hay comentarios.' }}</p>
                 </div>
             </div>
         </div>

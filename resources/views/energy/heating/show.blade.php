@@ -3,7 +3,7 @@
 
 @section('content_header')
     <a href="{{ route('heatings.edit', $heating) }}" class="btn btn-sm btn-danger float-right">
-        <i class="fas  text-yellowfa-edit mr-1"></i>
+        <i class="fas text-white fa-edit mr-1"></i>
         Editar Calefacción
     </a>
     <h1>Información de la Calefacción</h1>
@@ -24,20 +24,20 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Número de radiadores</strong>
-                    <p class="text-muted">{{ $heating->number_radiators }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</h5>
+                    <p class="lead">{{ $heating->number_radiators }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Potencia</strong>
-                    <p class="text-muted">{{ $heating->potency }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</h5>
+                    <p class="lead">{{ $heating->potency }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Modelo</strong>
-                    <p class="text-muted">{{ $heating->model }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</h5>
+                    <p class="lead">{{ $heating->model }}</p>
                 </div>
                 <div class="col-12">
-                    <strong><i class="fas fa-comments mr-1 text-yellow"></i> Otros</strong>
-                    <p class="text-muted">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
+                    <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                    <p class="lead">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
                 </div>
             </div>
         </div>
@@ -53,28 +53,28 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Gas</strong>
-                    <p class="text-muted">{{ $heating->gas }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas</h5>
+                    <p class="lead">{{ $heating->gas }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Gas Oil</strong>
-                    <p class="text-muted">{{ $heating->gasoil }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas Oil</h5>
+                    <p class="lead">{{ $heating->gasoil }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Tipo de caldera</strong>
-                    <p class="text-muted">{{ $heating->type_boiler }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de caldera</h5>
+                    <p class="lead">{{ $heating->type_boiler }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Número de radiadores</strong>
-                    <p class="text-muted">{{ $heating->number_radiators }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</h5>
+                    <p class="lead">{{ $heating->number_radiators }}</p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <strong><i class="fas fa-file-alt mr-1 text-yellow"></i> Volumen de depósito</strong>
-                    <p class="text-muted">{{ $heating->tank_volume }}</p>
+                    <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Volumen de depósito</h5>
+                    <p class="lead">{{ $heating->tank_volume }}</p>
                 </div>
                 <div class="col-12">
-                    <strong><i class="fas fa-comments mr-1 text-yellow"></i> Otros</strong>
-                    <p class="text-muted">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
+                    <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                    <p class="lead">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
                 </div>
             </div>
         </div>
