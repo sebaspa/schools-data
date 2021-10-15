@@ -23,6 +23,7 @@ class School extends Model
         'fax',
         'email',
         'liable',
+        'image',
         'others',
     ];
 

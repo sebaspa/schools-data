@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as InterventionImage;
 
 class SchoolController extends Controller
 {
@@ -65,7 +67,12 @@ class SchoolController extends Controller
     public function store(StoreSchoolRequest $request)
     {
         //
+        //$school = new School($request->validated());
         $school = School::create($request->validated());
+        if ($file = $request->file("image")) {
+            $school->image = $this->optimizeSchoolBuildingImage($file, $school->id);
+        }
+        $school->save();
         //dd($request->all());
         return redirect()->route('schools.index')->with('info', 'Escuela guardada correctamente');
     }
@@ -129,7 +136,14 @@ class SchoolController extends Controller
     public function update(UpdateSchoolRequest $request, School $school)
     {
         //
-        $school->update($request->validated());
+        if ($file = $request->file("image")) {
+            Storage::delete("/public/$school->image");
+            $school->fill($request->validated());
+            $school->image = $this->optimizeSchoolBuildingImage($file, $school->id);
+            $school->save();
+        } else {
+            $school->update(array_filter($request->validated()));
+        }
 
         return redirect()->route('schools.show', $school)->with('info', 'Se editó la escuela correctamente');
     }
@@ -147,6 +161,7 @@ class SchoolController extends Controller
             $request->validate([
                 'id' => 'required',
             ]);
+            Storage::delete("/public/$school->image");
             $school->buildings()->detach();
             $school->delete();
             return response()->json($school, 200);
@@ -187,7 +202,7 @@ class SchoolController extends Controller
         }
     }
 
-        /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -223,5 +238,19 @@ class SchoolController extends Controller
 
 
         return redirect()->route('schools.show', $school)->with('info', 'Se modificaron las descripciones correctamente');
+    }
+
+    protected function optimizeSchoolBuildingImage($file, $school)
+    {
+        $image_path = $file->store("schools/$school", "public");
+        $image_intervention = InterventionImage::make(public_path("storage/{$image_path}"));
+        $widthImage = $image_intervention->width();
+        if ($widthImage > 1280) {
+            $image_intervention->widen(1280);
+        }
+        $image_intervention->encode('jpg', 80);
+        $image_intervention->save();
+
+        return $image_path;
     }
 }

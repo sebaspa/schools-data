@@ -33,6 +33,7 @@ class StoreSchoolRequest extends FormRequest
             'fax' => 'nullable|min:3|max:50',
             'email' => 'nullable|min:10',
             'liable' => 'nullable|min:3|max:200',
+            'image' => 'nullable|mimes:jpg,jpeg,png|dimensions:min_width=600,min_height=400|max:3000',
             'others' => 'nullable|min:3',
         ];
     }

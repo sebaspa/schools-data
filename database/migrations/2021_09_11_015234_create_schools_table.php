@@ -23,6 +23,7 @@ class CreateSchoolsTable extends Migration
             $table->string("fax", 50)->nullable();
             $table->text("email", 100)->nullable();
             $table->string("liable", 200)->nullable();
+            $table->string("image")->nullable();
             $table->text("others")->nullable();
             $table->timestamps();
         });

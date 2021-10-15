@@ -17,7 +17,7 @@
                     <p class="mb-0">{{ session('info') }}</p>
                 </div>
             @endif
-            <form action="{{ route('schools.store') }}" method="POST">
+            <form action="{{ route('schools.store') }}" method="POST" enctype="multipart/form-data">
                 <div class="container-fluid">
                     @include('school._form', ['btnText' => 'Crear'])
                 </div>

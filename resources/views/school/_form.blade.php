@@ -84,6 +84,19 @@
     </div>
     <div class="col-12">
         <div class="form-group">
+            <label id="image">Foto</label>
+            <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror"
+                accept=".jpg, .jpeg, .png">
+            @error('image')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        @if ($school->image)
+            <a href="{{ asset('storage/' . $school->image) }}" class="btn btn-info" target="_blank"><i class="fa fa-eye"></i> Ver foto actual</a>
+        @endif
+    </div>
+    <div class="col-12">
+        <div class="form-group">
             <label for="others">Otros</label>
             <textarea name="others" id="others" rows="5"
                 class="form-control @error('others') is-invalid @enderror">{{ old('others', $school->others) }}</textarea>

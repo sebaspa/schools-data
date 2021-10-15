@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\School;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SchoolFactory extends Factory
@@ -13,7 +14,7 @@ class SchoolFactory extends Factory
      * @var string
      */
     protected $model = School::class;
-    private static $order = 1;
+    private static $order = 0;
 
     /**
      * Define the model's default state.
@@ -22,9 +23,11 @@ class SchoolFactory extends Factory
      */
     public function definition()
     {
+        self::$order++;
+        Storage::makeDirectory('public/schools/'.self::$order);
         return [
             //
-            'code' => 'CO-' . self::$order++,
+            'code' => 'CO-' . self::$order,
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
             'district' => $this->faker->city(),
@@ -32,6 +35,7 @@ class SchoolFactory extends Factory
             'fax' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
             'liable' => $this->faker->name(),
+            'image' => $this->faker->image('public/storage/schools/'. self::$order, 1560, 600, 'city', false),
             'others' => $this->faker->paragraph()
         ];
     }

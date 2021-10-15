@@ -19,7 +19,7 @@
             <h4>Filiación</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('schools.update', ['school' => $school]) }}" method="POST">
+            <form action="{{ route('schools.update', ['school' => $school]) }}" enctype="multipart/form-data" method="POST">
                 @method('patch')
                 <div class="container-fluid">
                     @include('school._form', ['btnText' => 'Editar'])
