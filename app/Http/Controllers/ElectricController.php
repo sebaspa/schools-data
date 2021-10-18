@@ -57,14 +57,14 @@ class ElectricController extends Controller
         $request->validate([
             'school_id' => 'required|exists:schools,id',
             'supplying_company' => 'nullable|min:3',
-            'contract_type' => 'required|min:3',
-            'supply_number' => 'required',
-            'number_light_meter' => 'required',
-            'hired_potency' => 'required',
-            'total_potency' => 'required',
-            'general_rush' => 'required',
-            'number_circuits' => 'required',
-            'partial_squares' => 'required',
+            'contract_type' => 'nullable|min:3',
+            'supply_number' => 'nullable',
+            'number_light_meter' => 'nullable',
+            'hired_potency' => 'nullable',
+            'total_potency' => 'nullable',
+            'general_rush' => 'nullable',
+            'number_circuits' => 'nullable',
+            'partial_squares' => 'nullable',
             'others' => 'nullable|min:3'
         ]);
 
@@ -121,14 +121,14 @@ class ElectricController extends Controller
         //
         $request->validate([
             'supplying_company' => 'nullable|min:3',
-            'contract_type' => 'required|min:3',
-            'supply_number' => 'required',
-            'number_light_meter' => 'required',
-            'hired_potency' => 'required',
-            'total_potency' => 'required',
-            'general_rush' => 'required',
-            'number_circuits' => 'required',
-            'partial_squares' => 'required',
+            'contract_type' => 'nullable|min:3',
+            'supply_number' => 'nullable',
+            'number_light_meter' => 'nullable',
+            'hired_potency' => 'nullable',
+            'total_potency' => 'nullable',
+            'general_rush' => 'nullable',
+            'number_circuits' => 'nullable',
+            'partial_squares' => 'nullable',
             'others' => 'nullable|min:3'
         ]);
 
