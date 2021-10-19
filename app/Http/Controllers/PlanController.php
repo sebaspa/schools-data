@@ -66,6 +66,7 @@ class PlanController extends Controller
             'service_id' => 'required|exists:services,id',
             'title' => 'required|min:3|max:200',
             'document' => 'required|mimes:jpg,jpeg,png,pdf|max:3000',
+            'document_free' => 'nullable|max:30000',
             'description' => 'nullable|min:3'
         ]);
 
@@ -77,14 +78,22 @@ class PlanController extends Controller
             } else {
                 $document = $this->optimizePlanImage($file, $request->school_id);
             }
-            Plan::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'document' => $document,
-                'school_id' => $request->school_id,
-                'service_id' => $request->service_id
-            ]);
         }
+        if($file_document_free = $request->file("document_free")){
+            $document_free = $file_document_free->store("plans/". $request->school_id, "public");
+        }
+        else {
+            $document_free = "NULL";
+        }
+
+        Plan::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'document' => $document,
+            'document_free' => $document_free,
+            'school_id' => $request->school_id,
+            'service_id' => $request->service_id
+        ]);
 
         return redirect()->route('plans.index', $request->school_id)->with('info', 'Se agregó un plano correctamente.');
     }
@@ -127,6 +136,7 @@ class PlanController extends Controller
         $request->validate([
             'title' => 'required|min:3|max:200',
             'document' => 'nullable|mimes:jpg,jpeg,png,pdf|max:3000',
+            'document_free' => 'nullable|max:30000',
             'description' => 'nullable|min:3'
         ]);
 
@@ -143,7 +153,14 @@ class PlanController extends Controller
                 $plan->document = $this->optimizePlanImage($file, $plan->school_id);
             }
             $plan->save();
-        } else {
+        }
+        else if($file_free = $request->file("document_free")){
+            Storage::delete("/public/$plan->document_free");
+            $plan->fill($request->all());
+            $plan->document_free = $file_free->store("plans/" . $plan->school_id, "public");
+            $plan->save();
+        }
+        else {
             $plan->update(array_filter($request->all()));
         }
 
@@ -160,6 +177,7 @@ class PlanController extends Controller
     {
         //
         Storage::delete("/public/$plan->document");
+        Storage::delete("/public/$plan->document_free");
         $plan->delete();
         return redirect()->route('plans.index', $plan->school_id)->with('info', 'Se eliminó un plano correctamente.');
     }

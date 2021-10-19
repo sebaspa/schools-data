@@ -40,6 +40,20 @@
     </div>
     <div class="col-12">
         <div class="form-group">
+            <label id="document_free">Documento libre</label>
+            <input type="file" id="document_free" name="document_free" class="form-control @error('document_free') is-invalid @enderror">
+            @error('document_free')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        @if ($plan->document_free)
+            <a href="/storage/{{ $plan->document_free }}" class="btn btn-info mb-4" target="_blank">
+                <i class="fa fa-eye mr-2"></i>Ver planimetría
+            </a>
+        @endif
+    </div>
+    <div class="col-12">
+        <div class="form-group">
             <label id="decription">Descripción</label>
             <textarea name="description" id="description" rows="5"
                 class="form-control @error('description') is-invalid @enderror">{{ old('description', $plan->description) }}</textarea>
