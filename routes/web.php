@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AirconditioningController;
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -45,6 +46,9 @@ Route::get('/login', function () {
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('audit', [AuditController::class, 'index'])->name("audit.index");
+Route::get('audit/get', [AuditController::class, 'get'])->name('audit.get');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name("dashboard");
 

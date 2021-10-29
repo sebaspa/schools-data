@@ -278,6 +278,12 @@ return [
             'icon' => 'fas fa-fw fa-sort-amount-up',
             'can'  => 'services.index',
         ],
+        [
+            'text'  => 'Auditoría',
+            'route' => 'audit.index',
+            'icon' => 'fas fa-fw fa-clipboard-list',
+            'can'  => 'audit.index',
+        ],
         /*
         [
             'text'        => 'pages',

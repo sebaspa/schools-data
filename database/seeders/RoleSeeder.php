@@ -34,7 +34,9 @@ class RoleSeeder extends Seeder
 
         //Dashboard
         //Permission::create(['name' => 'dashboard'])->syncRoles([$roleAdmin]);
-
+        //Auditoria
+        Permission::create(['name' => 'audit.index', 'description' => 'Ver la auditoría de la aplicación'])->syncRoles([$roleAdmin]);
+        
         //Usuarios
         Permission::create(['name' => 'users.create', 'description' => 'Crear usuarios'])->syncRoles([$roleAdmin]);
         Permission::create(['name' => 'users.index', 'description' => 'Ver listado de usuarios'])->syncRoles([$roleAdmin]);

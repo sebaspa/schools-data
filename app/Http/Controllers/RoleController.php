@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -63,6 +64,12 @@ class RoleController extends Controller
         $role = Role::create($request->all());
         $role->permissions()->sync($request->permissions);
 
+        activity('role')
+            ->performedOn($role)
+            ->causedBy(Auth::user())
+            ->event('created')
+            ->log('Se ha creado un rol');
+
         return redirect()->route('roles.index')->with('info', 'El rol se creó con éxito.');
     }
 
@@ -107,6 +114,12 @@ class RoleController extends Controller
         $role->update($request->all());
         $role->permissions()->sync($request->permissions);
 
+        activity('role')
+            ->performedOn($role)
+            ->causedBy(Auth::user())
+            ->event('updated')
+            ->log('Se ha editado un rol');
+
         return redirect()->route('roles.index')->with('info', 'El rol se actualizó con éxito.');
     }
 
@@ -126,6 +139,11 @@ class RoleController extends Controller
             $role = new Role($data);
             $role = Role::findOrFail($id);
             $role->delete();
+            activity('role')
+                ->performedOn($role)
+                ->causedBy(Auth::user())
+                ->event('deleted')
+                ->log('Se ha eliminado un rol');
             return response()->json($data, 200);
         }
     }
