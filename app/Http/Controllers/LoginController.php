@@ -23,7 +23,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-
+            activity('user')
+                ->causedBy(Auth::user())
+                ->event('login')
+                ->log('Se ha iniciado la sesión de usuario');
             return redirect()->intended('dashboard');
         }
 
@@ -34,6 +37,10 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        activity('user')
+            ->causedBy(Auth::user())
+            ->event('logout')
+            ->log('Se ha cerrado la sesión de usuario');
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

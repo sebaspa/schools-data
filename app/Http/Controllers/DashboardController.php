@@ -25,6 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         $colors = ['#17a2b8', '#28a745', '#ffc107', '#dc3545', '#0274ff', '#30a6ba'];
 
         $users = DB::table('users')->count();

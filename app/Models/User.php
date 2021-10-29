@@ -14,8 +14,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    //use HasApiTokens, HasFactory, Notifiable, HasRoles, LogsActivity;
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, LogsActivity;
+    //use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -64,10 +64,18 @@ class User extends Authenticatable
         return "profile";
     }
 
+    /**
+     * Activity log
+     */
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logFillable();
-        // Chain fluent methods for configuration options
+            ->useLogName('user')
+            ->logOnly(["name", "last_name", "email"])
+            ->dontLogIfAttributesChangedOnly(["remember_token"])
+            ->setDescriptionForEvent(fn(string $eventName) => "Se ha " .trans('logs.'.$eventName) . " el usuario  :subject.id")
+            ->logOnlyDirty()
+            ;
     }
 }
