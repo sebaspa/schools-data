@@ -34,7 +34,7 @@ class AuditController extends Controller
     public function get(Request $request)
     {
         if ($request->ajax()) {
-            $audits = Activity::select('id', 'log_name', 'event', 'description', 'causer_id', 'created_at')->get();
+            $audits = Activity::select('id', 'log_name', 'description', 'causer_id', 'created_at')->get();
             return DataTables::of($audits)
                 ->addColumn('causer', function ($audit) {
                     return '<a href="/users/' . $audit->causer_id . '" class="btn btn-xs btn-warning"><i class="fas fa-eye mr-2"></i> Ver</a>';

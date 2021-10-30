@@ -16,7 +16,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Tipo</th>
-                            <th>Evento</th>
                             <th>Descripción</th>
                             <th>Causante</th>
                             <th>Fecha</th>
@@ -56,10 +55,6 @@
                 {
                     data: 'log_name',
                     name: 'log_name'
-                },
-                {
-                    data: 'event',
-                    name: 'event'
                 },
                 {
                     data: 'description',

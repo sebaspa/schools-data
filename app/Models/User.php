@@ -4,13 +4,12 @@ namespace App\Models;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Activitylog\LogOptions;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
@@ -67,15 +66,13 @@ class User extends Authenticatable
     /**
      * Activity log
      */
-
-    public function getActivitylogOptions(): LogOptions
+    protected static $logName = 'user';
+    protected static $logAttributes = ["name", "last_name", "email"];
+    protected static $logAttributesToIgnore = ["remember_token"];
+    protected static $ignoreChangedAttributes = ["remember_token"];
+    protected static $logOnlyDirty = true;
+    public function getDescriptionForEvent(string $eventName): string
     {
-        return LogOptions::defaults()
-            ->useLogName('user')
-            ->logOnly(["name", "last_name", "email"])
-            ->dontLogIfAttributesChangedOnly(["remember_token"])
-            ->setDescriptionForEvent(fn(string $eventName) => "Se ha " .trans('logs.'.$eventName) . " el usuario  :subject.id")
-            ->logOnlyDirty()
-            ;
+        return "Se ha " .trans('logs.'.$eventName) . " el usuario  :subject.id";
     }
 }
