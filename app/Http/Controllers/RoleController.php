@@ -67,7 +67,6 @@ class RoleController extends Controller
         activity('role')
             ->performedOn($role)
             ->causedBy(Auth::user())
-            ->event('created')
             ->log('Se ha creado un rol');
 
         return redirect()->route('roles.index')->with('info', 'El rol se creó con éxito.');
@@ -117,7 +116,6 @@ class RoleController extends Controller
         activity('role')
             ->performedOn($role)
             ->causedBy(Auth::user())
-            ->event('updated')
             ->log('Se ha editado un rol');
 
         return redirect()->route('roles.index')->with('info', 'El rol se actualizó con éxito.');
@@ -142,7 +140,6 @@ class RoleController extends Controller
             activity('role')
                 ->performedOn($role)
                 ->causedBy(Auth::user())
-                ->event('deleted')
                 ->log('Se ha eliminado un rol');
             return response()->json($data, 200);
         }
