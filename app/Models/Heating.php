@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,13 +26,10 @@ class Heating extends Model
     /**
      * Activity log
      */
-
-    public function getActivitylogOptions(): LogOptions
+    protected static $logName = 'school_heating';
+    protected static $logOnlyDirty = true;
+    public function getDescriptionForEvent(string $eventName): string
     {
-        return LogOptions::defaults()
-            ->useLogName('school_heating')
-            ->setDescriptionForEvent(fn(string $eventName) => "Se ha " .trans('logs.'.$eventName) . " la energia  :subject.id")
-            ->logOnlyDirty()
-            ;
+        return "Se ha " . trans('logs.' . $eventName) . " la energía calefactora  :subject.id";
     }
 }

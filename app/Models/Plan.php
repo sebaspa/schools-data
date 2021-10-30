@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Spatie\Activitylog\LogOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -21,13 +20,10 @@ class Plan extends Model
     /**
      * Activity log
      */
-
-    public function getActivitylogOptions(): LogOptions
+    protected static $logName = 'school_plan';
+    protected static $logOnlyDirty = true;
+    public function getDescriptionForEvent(string $eventName): string
     {
-        return LogOptions::defaults()
-            ->useLogName('plan')
-            ->setDescriptionForEvent(fn(string $eventName) => "Se ha " .trans('logs.'.$eventName) . " el plano  :subject.id")
-            ->logOnlyDirty()
-            ;
+        return "Se ha " . trans('logs.' . $eventName) . " el plano  :subject.id";
     }
 }
