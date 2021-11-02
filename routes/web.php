@@ -64,6 +64,7 @@ Route::get('schools/get', [SchoolController::class, 'get'])->name('schools.get')
 Route::get('schools/images/buildings/{school}/{building}', [SchoolController::class, 'show_building_images'])->name('schools.show_building_images');
 Route::post('schools/deletebuilding', [SchoolController::class, 'deletebuilding'])->name('schools.deletebuilding');
 Route::patch('schools/updatebuildings/{school}', [SchoolController::class, 'updatebuildings'])->name('schools.updatebuildings');
+Route::get('schools/export/', [SchoolController::class, 'export'])->name('schools.export');
 Route::resource('schools', SchoolController::class)->names('schools');
 
 Route::get('buildings/school/{school}', [BuildingController::class, 'index_by_school'])->name('buildings.index_by_school');

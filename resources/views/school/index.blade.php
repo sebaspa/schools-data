@@ -34,6 +34,7 @@
             </div>
         </div>
     </div>
+    <a href="{{route('schools.export')}}" class="btn btn-primary">Exportar</a>
 @stop
 
 @section('js')

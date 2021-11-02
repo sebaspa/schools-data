@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SchoolExport;
 use App\Models\Image;
 use App\Models\Solar;
 use App\Models\School;
@@ -11,6 +12,7 @@ use App\Models\Electric;
 use Illuminate\Http\Request;
 use App\Models\Airconditioning;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
@@ -252,5 +254,10 @@ class SchoolController extends Controller
         $image_intervention->save();
 
         return $image_path;
+    }
+
+    public function export()
+    {
+        return Excel::download(new SchoolExport, 'schools.xlsx');
     }
 }
