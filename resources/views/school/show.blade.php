@@ -126,7 +126,8 @@
                         <p class="lead">{{ $electric->contract_type }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-charging-station mr-1 text-red"></i> Número de suministro</h5>
+                        <h5 class="text-bold"><i class="fas fa-charging-station mr-1 text-red"></i> Número de
+                            suministro</h5>
                         <p class="lead">{{ $electric->supply_number }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
@@ -146,11 +147,13 @@
                         <p class="lead">{{ $electric->general_rush }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-battery-three-quarters mr-1 text-red"></i> Número de circuitos</h5>
+                        <h5 class="text-bold"><i class="fas fa-battery-three-quarters mr-1 text-red"></i> Número de
+                            circuitos</h5>
                         <p class="lead">{{ $electric->number_circuits }}</p>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-solar-panel mr-1 text-red"></i> Número de cuadros parcial</h5>
+                        <h5 class="text-bold"><i class="fas fa-solar-panel mr-1 text-red"></i> Número de cuadros
+                            parcial</h5>
                         <p class="lead">{{ $electric->partial_squares }}</p>
                     </div>
                     <div class="col-12">
@@ -223,7 +226,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4">
-                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de grupos</h5>
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de grupos
+                                </h5>
                                 <p class="lead">{{ $airconditioning->number_groups }}</p>
                             </div>
                             <div class="col-12 col-md-6 col-lg-4">
@@ -268,72 +272,78 @@
         </div>
         <!-- /.card-header -->
         @forelse ($heatings as $heating)
-        @if ($heating->subtypeenergy_id == 3)
-        <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title">Eléctrico</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</h5>
-                        <p class="lead">{{ $heating->number_radiators }}</p>
+            @if ($heating->subtypeenergy_id == 3)
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Eléctrico</h3>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</h5>
-                        <p class="lead">{{ $heating->potency }}</p>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de
+                                    radiadores</h5>
+                                <p class="lead">{{ $heating->number_radiators }}</p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Potencia</h5>
+                                <p class="lead">{{ $heating->potency }}</p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</h5>
+                                <p class="lead">{{ $heating->model }}</p>
+                            </div>
+                            <div class="col-12">
+                                <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                                <p class="lead">
+                                    {{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Modelo</h5>
-                        <p class="lead">{{ $heating->model }}</p>
-                    </div>
-                    <div class="col-12">
-                        <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
-                        <p class="lead">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
-                    </div>
+                    <!-- /.card-body -->
                 </div>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        @endif
-        @if ($heating->subtypeenergy_id == 4)
-        <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title">Combustible</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas</h5>
-                        <p class="lead">{{ $heating->gas }}</p>
+            @endif
+            @if ($heating->subtypeenergy_id == 4)
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Combustible</h3>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas Oil</h5>
-                        <p class="lead">{{ $heating->gasoil }}</p>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas</h5>
+                                <p class="lead">{{ $heating->gas }}</p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Gas Oil</h5>
+                                <p class="lead">{{ $heating->gasoil }}</p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de caldera
+                                </h5>
+                                <p class="lead">{{ $heating->type_boiler }}</p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de
+                                    radiadores</h5>
+                                <p class="lead">{{ $heating->number_radiators }}</p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Volumen de
+                                    depósito</h5>
+                                <p class="lead">{{ $heating->tank_volume }}</p>
+                            </div>
+                            <div class="col-12">
+                                <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                                <p class="lead">
+                                    {{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Tipo de caldera</h5>
-                        <p class="lead">{{ $heating->type_boiler }}</p>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Número de radiadores</h5>
-                        <p class="lead">{{ $heating->number_radiators }}</p>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h5 class="text-bold"><i class="fas fa-file-alt mr-1 text-red"></i> Volumen de depósito</h5>
-                        <p class="lead">{{ $heating->tank_volume }}</p>
-                    </div>
-                    <div class="col-12">
-                        <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
-                        <p class="lead">{{ $heating->others ? $heating->others : 'No hay comentarios.' }}</p>
-                    </div>
+                    <!-- /.card-body -->
                 </div>
-            </div>
-            <!-- /.card-body -->
-        </div>
-        @endif
+            @endif
             <hr />
             <!-- /.card-body -->
         @empty
@@ -354,38 +364,39 @@
         </div>
         <!-- /.card-header -->
         @forelse ($solars as $solar)
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="text-bold"><i class="fas fa-chart-area mr-1 text-red"></i> Superficie total</h5>
-                    <p class="lead">{{ $solar->total_area }}</p>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="text-bold"><i class="fas fa-solar-panel mr-1 text-red"></i> Número de paneles</h5>
-                    <p class="lead">{{ $solar->number_panels }}</p>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Potencia instalada</h5>
-                    <p class="lead">{{ $solar->installed_potency }}</p>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="text-bold"><i class="fas fa-bullseye mr-1 text-red"></i> Marca</h5>
-                    <p class="lead">{{ $solar->mark }}</p>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="text-bold"><i class="fas fa-bullseye mr-1 text-red"></i> Modelo</h5>
-                    <p class="lead">{{ $solar->model }}</p>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Energía suministradaa la red</h5>
-                    <p class="lead">{{ $solar->energy_supplied }}</p>
-                </div>
-                <div class="col-12">
-                    <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
-                    <p class="lead">{{ $solar->others ? $solar->others : 'No hay comentarios.' }}</p>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h5 class="text-bold"><i class="fas fa-chart-area mr-1 text-red"></i> Superficie total</h5>
+                        <p class="lead">{{ $solar->total_area }}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h5 class="text-bold"><i class="fas fa-solar-panel mr-1 text-red"></i> Número de paneles</h5>
+                        <p class="lead">{{ $solar->number_panels }}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Potencia instalada</h5>
+                        <p class="lead">{{ $solar->installed_potency }}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h5 class="text-bold"><i class="fas fa-bullseye mr-1 text-red"></i> Marca</h5>
+                        <p class="lead">{{ $solar->mark }}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h5 class="text-bold"><i class="fas fa-bullseye mr-1 text-red"></i> Modelo</h5>
+                        <p class="lead">{{ $solar->model }}</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h5 class="text-bold"><i class="fas fa-bolt mr-1 text-red"></i> Energía suministradaa la red
+                        </h5>
+                        <p class="lead">{{ $solar->energy_supplied }}</p>
+                    </div>
+                    <div class="col-12">
+                        <h5 class="text-bold"><i class="fas fa-comments mr-1 text-red"></i> Otros</h5>
+                        <p class="lead">{{ $solar->others ? $solar->others : 'No hay comentarios.' }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
             <hr />
             <!-- /.card-body -->
         @empty
@@ -399,5 +410,21 @@
             </a>
         </div>
     </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-2">
+                    <button class="btn btn-success btn-print"><i class="fa fa-print mr-2"></i> Imprimir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
 
+@section('js')
+    <script>
+        $(".btn-print").on("click", function() {
+            window.print();
+        });
+    </script>
 @stop
