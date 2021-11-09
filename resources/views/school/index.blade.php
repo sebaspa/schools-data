@@ -8,11 +8,20 @@
 @section('plugins.Datatables', true)
 
 @section('content_header')
-    <a href="{{ route('schools.create') }}" class="btn btn-sm btn-danger float-right">
-        <i class="fas fa-user-plus mr-1"></i>
-        Crear filiación
-    </a>
-    <h1>Listado de filiaciónes</h1>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('schools.export') }}" class="btn btn-success mb-3"><i class="fas fa-file-excel mr-2"></i> Exportar</a>
+        </div>
+        <div class="col-12 col-md-6">
+            <h1>Listado de filiaciónes</h1>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="{{ route('schools.create') }}" class="btn btn-sm btn-danger float-right">
+                <i class="fas fa-user-plus mr-1"></i>
+                Crear filiación
+            </a>
+        </div>
+    </div>
 @stop
 
 @section('content')
@@ -34,7 +43,6 @@
             </div>
         </div>
     </div>
-    <a href="{{route('schools.export')}}" class="btn btn-primary">Exportar</a>
 @stop
 
 @section('js')
@@ -54,14 +62,13 @@
                     "previous": "Anterior"
                 }
             },
-            "order": [ 4, 'desc' ],
+            "order": [4, 'desc'],
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('schools.get') }}",
-            columns: [
-                {
+            columns: [{
                     data: 'code',
                     name: 'code'
                 },

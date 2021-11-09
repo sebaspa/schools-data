@@ -2,11 +2,20 @@
 @section('title', 'Escuela')
 
 @section('content_header')
-    <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-danger float-right">
-        <i class="fas fa-edit mr-1 text-white"></i>
-        Editar escuela
-    </a>
-    <h1>Información de la escuela</h1>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-success btn-print mb-3"><i class="fa fa-print mr-2"></i> Imprimir</button>
+        </div>
+        <div class="col-12 col-md-6">
+            <h1>Información de la escuela</h1>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="{{ route('schools.edit', $school) }}" class="btn btn-sm btn-danger float-right">
+                <i class="fas fa-edit mr-1 text-white"></i>
+                Editar escuela
+            </a>
+        </div>
+    </div>
 @stop
 
 @section('content')
@@ -408,15 +417,6 @@
             <a href="{{ route('solars.index', $school) }}" class="btn btn-info">
                 <i class="fa fa-sun mr-2"></i> Ver más
             </a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-md-4 col-lg-2">
-                    <button class="btn btn-success btn-print"><i class="fa fa-print mr-2"></i> Imprimir</button>
-                </div>
-            </div>
         </div>
     </div>
 @stop

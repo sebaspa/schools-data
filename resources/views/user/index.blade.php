@@ -9,10 +9,20 @@
 
 
 @section('content_header')
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-danger float-right"><i class="fas fa-user-plus mr-1"></i>
-        Crear usuario
-    </a>
-    <h1>Listado de usuarios</h1>
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('users.export') }}" class="btn btn-success mb-3"><i class="fas fa-file-excel mr-2"></i> Exportar</a>
+        </div>
+        <div class="col-12 col-md-6">
+            <h1>Listado de usuarios</h1>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="{{ route('users.create') }}" class="btn btn-sm btn-danger float-right"><i
+                    class="fas fa-user-plus mr-1"></i>
+                Crear usuario
+            </a>
+        </div>
+    </div>
 @stop
 
 @section('content')
@@ -34,7 +44,6 @@
             </div>
         </div>
     </div>
-    <a href="{{route('users.export')}}" class="btn btn-primary">Exportar</a>
 @stop
 
 @section('js')
@@ -54,14 +63,13 @@
                     "previous": "Anterior"
                 }
             },
-            "order": [ 0, 'desc' ],
+            "order": [0, 'desc'],
             responsive: true,
             autoWidth: false,
             processing: true,
             serverSide: true,
             ajax: "{{ route('users.get') }}",
-            columns: [
-                {
+            columns: [{
                     data: 'id',
                     name: 'id',
                     visible: false
